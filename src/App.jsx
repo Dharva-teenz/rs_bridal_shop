@@ -7,6 +7,8 @@ const A = {
   slideRight: (d = 0) => ({ initial: { opacity: 0, x: 60 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true, amount: 0.15 }, transition: { duration: 0.5, ease: "easeOut", delay: d } }),
 };
 
+const IMG = import.meta.env.BASE_URL + "assets/images";
+
 const CONFIG = {
   whatsappNumber: "", // Add client number like 919876543210 before launch
   phoneDisplay: "Contact number pending",
@@ -15,12 +17,12 @@ const CONFIG = {
   primaryArea: "Chennai, Tamil Nadu",
 };
 
-const heroImage = "assets/images/bidal-home.png";
+const heroImage = `${IMG}/bidal-home.png`;
 
 const services = [
   {
     name: "Bridal Makeup",
-    image: "assets/images/bridal-4.webp",
+    image: `${IMG}/bridal-4.webp`,
     summary: "A complete wedding-day look planned around your outfit, jewellery, skin preference and ceremony style.",
     details: "Bridal makeup is planned as a complete look rather than only a makeup application. The final style can be discussed around outfit colours, jewellery, venue lighting, photography and the bride's comfort preference.",
     bestFor: "Wedding ceremony, reception or main bridal event",
@@ -29,7 +31,7 @@ const services = [
   },
   {
     name: "Party Makeup",
-    image: "assets/images/bridal-2.webp",
+    image: `${IMG}/bridal-2.webp`,
     summary: "Soft, elegant or glamorous makeup for receptions, parties and family celebrations.",
     details: "Party makeup can be kept natural, soft-glam or more defined depending on the outfit, event timing and personal preference. It is suitable for bridesmaids, friends and guests too.",
     bestFor: "Reception guests, engagement parties and celebrations",
@@ -38,7 +40,7 @@ const services = [
   },
   {
     name: "HD Makeup",
-    image: "assets/images/bridal-1.webp",
+    image: `${IMG}/bridal-1.webp`,
     summary: "Camera-friendly makeup with a smooth, polished finish for high-resolution photos and video.",
     details: "HD makeup focuses on a refined finish that photographs well under close-up cameras and event lighting. The exact product selection and finish can be adapted to the client's skin and desired coverage.",
     bestFor: "Bridal photography, reception and camera-heavy events",
@@ -47,7 +49,7 @@ const services = [
   },
   {
     name: "Airbrush Makeup",
-    image: "assets/images/gallery-1.webp",
+    image: `${IMG}/gallery-1.webp`,
     summary: "A lightweight, even-finish option for clients who prefer an airbrushed bridal look.",
     details: "Airbrush makeup can provide a light, even appearance with a refined finish. Keep this service on the live site only after the client confirms that airbrush makeup is actually offered.",
     bestFor: "Brides who specifically request an airbrush finish",
@@ -57,7 +59,7 @@ const services = [
   {
     name: "Hair Styling",
     image: "https://images.pexels.com/photos/12303221/pexels-photo-12303221.jpeg?auto=compress&cs=tinysrgb&w=900",
-    fallback: "assets/images/bridal-2.webp",
+    fallback: `${IMG}/bridal-2.webp`,
     summary: "Bridal and occasion hairstyles coordinated with jewellery, flowers, veil and outfit styling.",
     details: "Hair styling can be planned around face shape, hair length, outfit neckline and accessories. Bridal buns, curls, braids and event hairstyles can be discussed based on what the client offers.",
     bestFor: "Bridal, reception, engagement and party looks",
@@ -67,7 +69,7 @@ const services = [
   {
     name: "Saree Draping",
     image: "https://images.pexels.com/photos/30458545/pexels-photo-30458545.jpeg?auto=compress&cs=tinysrgb&w=900",
-    fallback: "assets/images/gallery-2.webp",
+    fallback: `${IMG}/gallery-2.webp`,
     summary: "Neat traditional or contemporary saree draping for bridal and special-event looks.",
     details: "Saree draping can be matched to the event style, saree fabric and preferred silhouette. South Indian bridal draping, classic pleats and event-ready pinning can be discussed with the client.",
     bestFor: "Wedding, muhurtham, reception and family functions",
@@ -77,7 +79,7 @@ const services = [
   {
     name: "Mehendi",
     image: "https://images.pexels.com/photos/33088135/pexels-photo-33088135.jpeg?auto=compress&cs=tinysrgb&w=900",
-    fallback: "assets/images/bridal-4.webp",
+    fallback: `${IMG}/bridal-4.webp`,
     summary: "Traditional bridal or event mehendi — keep this service only if the client confirms it is offered.",
     details: "This service is included from the original brief as a placeholder. If RS Bridal provides mehendi directly or through a partner, the final page can show available design styles, coverage and booking requirements.",
     bestFor: "Bridal mehendi, engagement and festive events",
@@ -86,7 +88,7 @@ const services = [
   },
   {
     name: "Pre-Wedding Shoot Makeup",
-    image: "assets/images/gallery-2.webp",
+    image: `${IMG}/gallery-2.webp`,
     summary: "Makeup and styling support for outdoor, studio and couple pre-wedding photo sessions.",
     details: "Pre-wedding shoot makeup can be planned for one or multiple outfits, with attention to natural light, camera finish and the shoot setting. Share the city and venue while booking so availability can be planned clearly.",
     bestFor: "Pre-wedding photoshoots and couple sessions",
@@ -96,7 +98,7 @@ const services = [
   {
     name: "Groom Makeup / Grooming",
     image: "https://images.pexels.com/photos/19609236/pexels-photo-19609236.jpeg?auto=compress&cs=tinysrgb&w=900",
-    fallback: "assets/images/gallery-3.webp",
+    fallback: `${IMG}/gallery-3.webp`,
     summary: "Subtle camera-ready grooming for the groom — publish only after service availability is confirmed.",
     details: "Groom grooming can include basic skin prep, shine control and a natural camera-ready finish. This service should remain marked as pending until the client confirms the exact scope.",
     bestFor: "Wedding, reception and couple photography",
@@ -105,7 +107,7 @@ const services = [
   },
   {
     name: "Family Function Makeup",
-    image: "assets/images/bridal-3.webp",
+    image: `${IMG}/bridal-3.webp`,
     summary: "Event-ready makeup for mothers, sisters, bridesmaids and family members attending functions.",
     details: "Family makeup bookings can be planned for one person or a small group. Looks can be coordinated with outfits while keeping each person's preferred level of makeup in mind.",
     bestFor: "Wedding family, bridesmaids and special functions",
@@ -115,12 +117,12 @@ const services = [
 ];
 
 const galleryImages = [
-  { src: "assets/images/gallery-1.webp", alt: "Bridal makeup gallery portrait" },
-  { src: "assets/images/gallery-2.webp", alt: "Indian bridal makeup look gallery" },
-  { src: "assets/images/gallery-3.webp", alt: "Traditional bridal beauty look" },
-  { src: "assets/images/bridal-1.webp", alt: "Bridal makeup with traditional jewellery" },
-  { src: "assets/images/bridal-5.webp", alt: "Elegant bridal portrait" },
-  { src: "assets/images/bridal-3.webp", alt: "Wedding makeup close-up" },
+  { src: `${IMG}/gallery-1.webp`, alt: "Bridal makeup gallery portrait" },
+  { src: `${IMG}/gallery-2.webp`, alt: "Indian bridal makeup look gallery" },
+  { src: `${IMG}/gallery-3.webp`, alt: "Traditional bridal beauty look" },
+  { src: `${IMG}/bridal-1.webp`, alt: "Bridal makeup with traditional jewellery" },
+  { src: `${IMG}/bridal-5.webp`, alt: "Elegant bridal portrait" },
+  { src: `${IMG}/bridal-3.webp`, alt: "Wedding makeup close-up" },
 ];
 
 const faqItems = [
@@ -285,7 +287,7 @@ function Hero({ onBook }) {
 function About({ onBook }) {
   return <section id="about" className="section-anchor bg-[#fffdfb] py-20 sm:py-24">
     <div className="mx-auto grid max-w-[1420px] items-center gap-10 px-5 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:gap-16 lg:px-8">
-      <motion.div {...A.slideLeft(0.1)} className="relative"><div className="overflow-hidden rounded-[30px] border border-[#eadfd5] bg-[#f3e5da] shadow-[0_22px_60px_rgba(69,35,27,.12)]"><img src="assets/images/gallery-3.webp" alt="RS Bridal makeup artist introduction placeholder portrait" className="h-[520px] w-full object-cover object-center" /></div><div className="absolute -bottom-6 -right-2 max-w-[240px] rounded-[24px] border border-[#e4d4c8] bg-white p-5 shadow-xl sm:right-6"><p className="brand-serif text-[22px] text-[#6e151c]">Client details pending</p><p className="mt-2 text-[12px] leading-5 text-[#6d615b]">Replace this image and training information with the artist's real profile before launch.</p></div></motion.div>
+      <motion.div {...A.slideLeft(0.1)} className="relative"><div className="mx-auto max-w-[400px] overflow-hidden rounded-[30px] border border-[#eadfd5] bg-[#f3e5da] shadow-[0_22px_60px_rgba(69,35,27,.12)]"><img src={`${IMG}/gallery-3.webp`} alt="RS Bridal makeup artist introduction placeholder portrait" className="h-[520px] w-full object-cover object-center" /></div></motion.div>
       <motion.div {...A.slideRight(0.15)}><div><p className="section-kicker">ABOUT RS BRIDAL</p><h2 className="section-title">Beauty That Feels Like You</h2><p className="mt-4 text-[14px] font-semibold tracking-[.04em] text-[#8a363b]">Personalised bridal artistry for your most meaningful celebrations.</p><p className="mt-6 text-[15px] leading-7 text-[#655a54]">RS Bridal is built around one simple idea — every bride should feel like the most confident and beautiful version of herself on her wedding day. Each look is thoughtfully planned around the bride's features, outfit, jewellery, occasion, and personal preference rather than following one fixed makeup style.</p><p className="mt-4 text-[15px] leading-7 text-[#655a54]">Originally from Trichy and primarily serving bridal clients in Chennai, RS Bridal accepts wedding and beauty bookings across Tamil Nadu. Whether the celebration is intimate or grand, the focus remains on creating an elegant, comfortable, and timeless look that feels truly personal to the bride.</p>
         <div className="mt-7 grid gap-3 sm:grid-cols-2">{[["Personalised Looks", "Created around your features and personal style"], ["Bridal-Focused Beauty", "Thoughtful styling for your wedding celebrations"], ["Chennai Bookings", "Primary service area for bridal appointments"], ["Across Tamil Nadu", "Wedding bookings accepted throughout Tamil Nadu"]].map(([title, desc], i) => <motion.div key={title} {...A.fadeUp(0.3 + i * 0.08)} className="flex gap-3 rounded-[22px] border border-[#eadfd5] bg-[#fbf6f1] p-4"><span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#7a111a] text-white"><Icon name="check" size={14} /></span><div><strong className="block text-[13px] text-[#29211e]">{title}</strong><span className="mt-1 block text-[12px] leading-5 text-[#746963]">{desc}</span></div></motion.div>)}</div>
         <motion.div {...A.fadeUp(0.6)} className="mt-8 flex flex-wrap gap-3"><button onClick={onBook} className="btn-primary">Book an Appointment</button><button onClick={() => scrollToSection("gallery")} className="btn-secondary">See Makeup Work</button></motion.div></div></motion.div>
@@ -324,7 +326,7 @@ function FeaturedGuide({ onBook }) {
   const points = [["book", "Understand Makeup Pricing", "What usually changes a bridal beauty quote"], ["calendar", "2026 Planning Guide", "Useful questions before confirming your package"], ["sparkles", "Smart Saving Tips", "Plan inclusions, timing and group bookings early"], ["heart", "Tailored Quote", "Final pricing is discussed for your exact requirement"]];
   return <section id="featured-guide" className="section-anchor bg-[#fffdfb] py-20 sm:py-24"><div className="mx-auto max-w-[1420px] px-5 sm:px-6 lg:px-8 xl:px-10">
     <motion.div {...A.fadeUp(0)} className="featured-layout overflow-hidden rounded-[32px] border border-[#eadfd5] bg-[#fbf4ee] shadow-[0_18px_55px_rgba(69,35,27,.07)]">
-      <div className="featured-media relative overflow-hidden"><img src="assets/images/bridal-5.webp" alt="Bridal makeup cost planning guide in India" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-[#571016]/45 via-transparent to-transparent"></div><div className="absolute bottom-6 left-6 rounded-full bg-white/92 px-4 py-2 text-[11px] font-bold text-[#74131b] shadow">5 Minutes Read</div></div>
+      <div className="featured-media relative overflow-hidden"><img src={`${IMG}/bridal-5.webp`} alt="Bridal makeup cost planning guide in India" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-[#571016]/45 via-transparent to-transparent"></div><div className="absolute bottom-6 left-6 rounded-full bg-white/92 px-4 py-2 text-[11px] font-bold text-[#74131b] shadow">5 Minutes Read</div></div>
       <div className="p-7 sm:p-10 lg:p-12"><p className="section-kicker">FEATURED BRIDAL GUIDE</p><h2 className="brand-serif mt-3 text-[38px] leading-[1.08] text-[#211815] sm:text-[46px]">Bridal Makeup Costs in India (2026)</h2><p className="mt-5 max-w-[650px] text-[14px] leading-7 text-[#665a54]">Discover how bridal beauty pricing is usually structured, what can affect your quote and how to compare packages without choosing only by the lowest number.</p><div className="mt-7 grid gap-3 sm:grid-cols-2">{points.map(([icon, title, text], i) => <motion.div key={title} {...A.fadeUp(0.2 + i * 0.08)} className="flex gap-3 rounded-[22px] border border-[#eadfd5] bg-white p-4"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#f6e6dc] text-[#7a111a]"><Icon name={icon} size={18} /></span><div><strong className="block text-[13px] text-[#312724]">{title}</strong><span className="mt-1 block text-[11px] leading-5 text-[#746963]">{text}</span></div></motion.div>)}</div><div className="mt-7 flex flex-wrap gap-3"><button onClick={() => navigateTo("guide")} className="btn-primary">Read Full Article <Icon name="arrow" size={16} /></button><button onClick={onBook} className="btn-secondary">Get a Personal Quote</button></div></div>
     </motion.div>
     <motion.div {...A.fadeUp(0.3)} className="guide-stats mt-5 overflow-hidden rounded-[26px]">{[["10", "Service categories", "Bridal to family functions"], ["Chennai", "Primary work area", "Main booking focus"], ["Tamil Nadu", "Service coverage", "Cities and districts across the state"], ["1:1", "Quote discussion", "Based on your requirement"]].map(([big, title, desc], i) => <div key={title} className={`p-6 ${i ? "border-t border-white/10 sm:border-l sm:border-t-0" : ""}`}><strong className="brand-serif text-[30px] text-[#f4d7c6]">{big}</strong><span className="mt-1 block text-[12px] font-bold">{title}</span><span className="mt-1 block text-[11px] text-[#d9bab1]">{desc}</span></div>)}</motion.div>
@@ -343,7 +345,7 @@ class FAQ extends React.Component {
 
 class Gallery extends React.Component {
   constructor(props) { super(props); this.state = { selected: null }; }
-  render() { const { onBook } = this.props; return <section id="gallery" className="section-anchor bg-[#fffdfb] py-20 sm:py-24"><div className="mx-auto max-w-[1420px] px-5 sm:px-6 lg:px-8 xl:px-10"><motion.div {...A.fadeUp(0)} className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><p className="section-kicker">BRIDAL GALLERY</p><h2 className="section-title">Looks that inspire your wedding-day mood</h2></div><button onClick={onBook} className="btn-secondary self-start">Book Your Look</button></motion.div><div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">{galleryImages.map((item, index) => <motion.button key={item.src} {...A.fadeUp(0.1 + index * 0.07)} onClick={() => this.setState({ selected: item })} className={`group overflow-hidden rounded-[24px] bg-[#efe1d7] ${index === 0 ? "md:row-span-2" : ""}`}><img src={item.src} alt={item.alt} loading="lazy" className={`w-full object-cover transition duration-500 group-hover:scale-[1.035] ${index === 0 ? "h-full min-h-[430px]" : "h-[250px]"}`} /></motion.button>)}</div></div>{this.state.selected && <div className="modal-backdrop fixed inset-0 z-[80] grid place-items-center bg-black/80 p-4" onClick={() => this.setState({ selected: null })}><button className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full bg-white text-[#70151c]" aria-label="Close image"><Icon name="close" /></button><img src={this.state.selected.src} alt={this.state.selected.alt} className="lightbox-image max-w-[92vw] rounded-[24px]" /></div>}</section>; }
+  render() { const { onBook } = this.props; return <section id="gallery" className="section-anchor bg-[#fffdfb] py-20 sm:py-24"><div className="mx-auto max-w-[1420px] px-5 sm:px-6 lg:px-8 xl:px-10"><motion.div {...A.fadeUp(0)} className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><p className="section-kicker">BRIDAL GALLERY</p><h2 className="section-title">Looks that inspire your wedding-day mood</h2></div><button onClick={onBook} className="btn-secondary self-start">Book Your Look</button></motion.div><div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">{galleryImages.map((item, index) => <motion.button key={item.src} {...A.fadeUp(0.1 + index * 0.07)} onClick={() => this.setState({ selected: item })} className={`group overflow-hidden rounded-[24px] bg-[#efe1d7] ${index === 0 ? "md:row-span-2" : ""}`}><img src={item.src} alt={item.alt} loading="lazy" className={`block w-full h-full object-cover ${index === 0 ? "" : "aspect-[4/3]"}`} /></motion.button>)}</div></div>{this.state.selected && <div className="modal-backdrop fixed inset-0 z-[80] grid place-items-center bg-black/80 p-4" onClick={() => this.setState({ selected: null })}><button className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full bg-white text-[#70151c]" aria-label="Close image"><Icon name="close" /></button><img src={this.state.selected.src} alt={this.state.selected.alt} className="lightbox-image max-w-[92vw] rounded-[24px]" /></div>}</section>; }
 }
 
 function WhyUs() {
@@ -357,12 +359,12 @@ function ServiceAreas({ onBook }) {
 }
 
 function Footer({ onBook }) {
-  return <footer className="bg-[#211715] text-[#eadbd4]"><div className="mx-auto grid max-w-[1420px] gap-8 px-5 py-12 sm:px-6 md:grid-cols-4 lg:px-8 xl:px-10"><div><Brand /><p className="mt-4 max-w-[280px] text-[12px] leading-6 text-[#bdaea8]">Responsive React + Tailwind website for a bridal makeup artist focused on Chennai and available for bookings across Tamil Nadu.</p></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Quick Links</h3><div className="mt-4 grid gap-2 text-[12px] text-[#bdaea8]"><button onClick={() => scrollToSection("about")} className="text-left">About</button><button onClick={() => scrollToSection("services")} className="text-left">Services</button><button onClick={() => navigateTo("guide")} className="text-left">Bridal Guide</button><button onClick={() => scrollToSection("faq")} className="text-left">FAQs</button><button onClick={() => scrollToSection("service-areas")} className="text-left">Service Areas</button></div></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Service Area</h3><p className="mt-4 text-[13px] font-semibold text-white">Chennai — Primary Work Area</p><p className="mt-2 text-[13px]">Bookings across Tamil Nadu</p><p className="mt-4 text-[13px]">{CONFIG.phoneDisplay}</p><p className="mt-2 text-[13px]">{CONFIG.instagramHandle}</p></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Booking</h3><p className="mt-4 text-[12px] leading-6 text-[#bdaea8]">Use the dedicated booking page to share your service, date, city and venue, then send the enquiry on WhatsApp.</p><button onClick={onBook} className="mt-4 rounded-full border border-[#8f5d58] px-5 py-2.5 text-[13px] font-semibold text-white">Book Now</button></div></div><div className="border-t border-white/10"><div className="mx-auto flex max-w-[1420px] flex-col gap-2 px-5 py-5 text-[11px] text-[#9f918b] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-10"><span>© {new Date().getFullYear()} RS Bridal. All rights reserved.</span><span>Client photos, final contact details, prices and confirmed service claims required before launch.</span></div></div></footer>;
+  return <footer className="bg-[#211715] text-[#eadbd4]"><div className="mx-auto grid max-w-[1420px] gap-8 px-5 py-12 sm:px-6 md:grid-cols-4 lg:px-8 xl:px-10"><div><Brand /><p className="mt-4 max-w-[280px] text-[12px] leading-6 text-[#bdaea8]">bridal makeup artist focused on Chennai and available for bookings across Tamil Nadu.</p></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Quick Links</h3><div className="mt-4 grid gap-2 text-[12px] text-[#bdaea8]"><button onClick={() => scrollToSection("about")} className="text-left">About</button><button onClick={() => scrollToSection("services")} className="text-left">Services</button><button onClick={() => navigateTo("guide")} className="text-left">Bridal Guide</button><button onClick={() => scrollToSection("faq")} className="text-left">FAQs</button><button onClick={() => scrollToSection("service-areas")} className="text-left">Service Areas</button></div></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Service Area</h3><p className="mt-4 text-[13px] font-semibold text-white">Chennai — Primary Work Area</p><p className="mt-2 text-[13px]">Bookings across Tamil Nadu</p><p className="mt-4 text-[13px]">{CONFIG.phoneDisplay}</p><p className="mt-2 text-[13px]">{CONFIG.instagramHandle}</p></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Booking</h3><p className="mt-4 text-[12px] leading-6 text-[#bdaea8]">Use the dedicated booking page to share your service, date, city and venue, then send the enquiry on WhatsApp.</p><button onClick={onBook} className="mt-4 rounded-full border border-[#8f5d58] px-5 py-2.5 text-[13px] font-semibold text-white">Book Now</button></div></div><div className="border-t border-white/10"><div className="mx-auto flex max-w-[1420px] flex-col gap-2 px-5 py-5 text-[11px] text-[#9f918b] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-10"><span>© {new Date().getFullYear()} RS Bridal. All rights reserved.</span><span>Client photos, final contact details, prices and confirmed service claims required before launch.</span></div></div></footer>;
 }
 
 function FloatingWhatsApp() {
   const click = () => { if (CONFIG.whatsappNumber) window.open(`https://wa.me/${CONFIG.whatsappNumber}`, "_blank", "noopener"); else navigateTo("book"); };
-  return <button onClick={click} className="wa-float fixed bottom-5 right-5 z-50 grid h-[60px] w-[60px] place-items-center rounded-full bg-[#25D366] shadow-[0_8px_28px_rgba(37,211,102,.45)] transition hover:scale-110" aria-label="Open WhatsApp"><img src="/assets/images/whatsapp-logo.svg" alt="" className="h-[34px] w-[34px]" /></button>;
+  return <button onClick={click} className="wa-float fixed bottom-5 right-5 z-50 grid h-[60px] w-[60px] place-items-center rounded-full bg-[#25D366] shadow-[0_8px_28px_rgba(37,211,102,.45)] transition hover:scale-110" aria-label="Open WhatsApp"><img src={`${IMG}/whatsapp-logo.svg`} alt="" className="h-[34px] w-[34px]" /></button>;
 }
 
 class BookingPage extends React.Component {
