@@ -10,10 +10,11 @@ const A = {
 const IMG = import.meta.env.BASE_URL + "assets/images";
 
 const CONFIG = {
-  whatsappNumber: "", // Add client number like 919876543210 before launch
-  phoneDisplay: "Contact number pending",
-  instagramUrl: "",
-  instagramHandle: "Instagram pending",
+  whatsappNumber: "7449189676",
+  phoneDisplay: "pending",
+  instagramUrl: "https://instagram.com/suji_makeover_in_chennai_1",
+  instagramHandle: "suji_makeover_in_chennai_1",
+  email: "suji.makeover@gmail.com",
   primaryArea: "Chennai, Tamil Nadu",
 };
 
@@ -182,6 +183,8 @@ function Icon({ name, size = 20 }) {
     minus: <path d="M5 12h14" />,
     book: <g><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z" /><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H13v16h4.5a2.5 2.5 0 0 1 2.5 2.5v-16Z" /></g>,
     clock: <g><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></g>,
+    instagram: <g><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" /></g>,
+    mail: <g><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-8.9 5.4a2 2 0 0 1-2.2 0L2 7" /></g>,
   };
   return <svg {...common}>{paths[name] || paths.sparkles}</svg>;
 }
@@ -207,11 +210,10 @@ function scrollToSection(id) {
   }
 }
 
-function Brand() {
+function Brand({ white }) {
   return <button onClick={() => navigateTo("home")} className="flex items-center gap-3 text-left" aria-label="RS Bridal home">
-    <span className="brand-serif grid h-11 w-11 place-items-center rounded-full border border-[#b8917e] text-[22px] text-[#79151d]">RS</span>
-    <span><strong className="brand-serif block text-[20px] tracking-[.05em] text-[#4f171b]">RS BRIDAL</strong><span className="block text-[10px] tracking-[.1em] text-[#8a7168]">MAKEUP ARTIST</span></span>
-  </button>;
+    <span className={`brand-serif grid h-11 w-11 place-items-center rounded-full border ${white ? "border-white/30 text-white" : "border-[#b8917e] text-[#79151d]"}`}>RS</span>
+    <span><strong className={`brand-serif block text-[20px] tracking-[.05em] ${white ? "text-white" : "text-[#4f171b]"}`}>RS BRIDAL</strong><span className={`block text-[10px] tracking-[.1em] ${white ? "text-white/60" : "text-[#8a7168]"}`}>MAKEUP ARTIST</span></span></button>;
 }
 
 class Header extends React.Component {
@@ -359,7 +361,7 @@ function ServiceAreas({ onBook }) {
 }
 
 function Footer({ onBook }) {
-  return <footer className="bg-[#211715] text-[#eadbd4]"><div className="mx-auto grid max-w-[1420px] gap-8 px-5 py-12 sm:px-6 md:grid-cols-4 lg:px-8 xl:px-10"><div><Brand /><p className="mt-4 max-w-[280px] text-[12px] leading-6 text-[#bdaea8]">bridal makeup artist focused on Chennai and available for bookings across Tamil Nadu.</p></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Quick Links</h3><div className="mt-4 grid gap-2 text-[12px] text-[#bdaea8]"><button onClick={() => scrollToSection("about")} className="text-left">About</button><button onClick={() => scrollToSection("services")} className="text-left">Services</button><button onClick={() => navigateTo("guide")} className="text-left">Bridal Guide</button><button onClick={() => scrollToSection("faq")} className="text-left">FAQs</button><button onClick={() => scrollToSection("service-areas")} className="text-left">Service Areas</button></div></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Service Area</h3><p className="mt-4 text-[13px] font-semibold text-white">Chennai — Primary Work Area</p><p className="mt-2 text-[13px]">Bookings across Tamil Nadu</p><p className="mt-4 text-[13px]">{CONFIG.phoneDisplay}</p><p className="mt-2 text-[13px]">{CONFIG.instagramHandle}</p></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Booking</h3><p className="mt-4 text-[12px] leading-6 text-[#bdaea8]">Use the dedicated booking page to share your service, date, city and venue, then send the enquiry on WhatsApp.</p><button onClick={onBook} className="mt-4 rounded-full border border-[#8f5d58] px-5 py-2.5 text-[13px] font-semibold text-white">Book Now</button></div></div><div className="border-t border-white/10"><div className="mx-auto flex max-w-[1420px] flex-col gap-2 px-5 py-5 text-[11px] text-[#9f918b] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-10"><span>© {new Date().getFullYear()} RS Bridal. All rights reserved.</span><span>Client photos, final contact details, prices and confirmed service claims required before launch.</span></div></div></footer>;
+  return <footer className="bg-[#211715] text-[#eadbd4]"><div className="mx-auto grid max-w-[1420px] gap-8 px-5 py-12 sm:px-6 md:grid-cols-4 lg:px-8 xl:px-10"><div><Brand white /><p className="mt-4 max-w-[280px] text-[12px] leading-6 text-[#bdaea8]">bridal makeup artist focused on Chennai and available for bookings across Tamil Nadu.</p></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Quick Links</h3><div className="mt-4 grid gap-2 text-[12px] text-[#bdaea8]"><button onClick={() => scrollToSection("about")} className="text-left">About</button><button onClick={() => scrollToSection("services")} className="text-left">Services</button><button onClick={() => navigateTo("guide")} className="text-left">Bridal Guide</button><button onClick={() => scrollToSection("faq")} className="text-left">FAQs</button><button onClick={() => scrollToSection("service-areas")} className="text-left">Service Areas</button></div></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Service Area</h3><p className="mt-4 text-[13px] font-semibold text-white">Chennai — Primary Work Area</p><p className="mt-2 text-[13px]">Bookings across Tamil Nadu</p><p className="mt-4 text-[13px]">{CONFIG.phoneDisplay}</p><div className="mt-3 flex flex-wrap gap-3"><a href={CONFIG.instagramUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[13px] text-[#e5b8a7] transition hover:text-white"><Icon name="instagram" size={16} /> Instagram</a><a href={"mailto:" + CONFIG.email} className="inline-flex items-center gap-1.5 text-[13px] text-[#e5b8a7] transition hover:text-white"><Icon name="mail" size={16} /> Gmail</a></div></div><div><h3 className="text-[12px] font-bold uppercase tracking-[.16em] text-white">Booking</h3><p className="mt-4 text-[12px] leading-6 text-[#bdaea8]">Use the dedicated booking page to share your service, date, city and venue, then send the enquiry on WhatsApp.</p><button onClick={onBook} className="mt-4 rounded-full border border-[#8f5d58] px-5 py-2.5 text-[13px] font-semibold text-white">Book Now</button></div></div><div className="border-t border-white/10"><div className="mx-auto flex max-w-[1420px] flex-col gap-2 px-5 py-5 text-[11px] text-[#9f918b] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-10"><span>© {new Date().getFullYear()} RS Bridal. All rights reserved.</span><span>Built with care for bridal beauty.</span></div></div></footer>;
 }
 
 function FloatingWhatsApp() {
