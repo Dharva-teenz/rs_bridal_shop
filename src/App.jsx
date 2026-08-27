@@ -439,34 +439,34 @@ const services = serviceCategories.flatMap(category =>
 );
 
 const galleryImages = [
-  { src: `${IMG}/gallery/image1.png`, alt: "Bridal makeup work image 1", fallback: `${IMG}/gallery/image1.png` },
-  { src: `${IMG}/gallery/image2.png`, alt: "Bridal makeup work image 2", fallback: `${IMG}/gallery/image2.png` },
-  { src: `${IMG}/gallery/image3.jpeg`, alt: "Bridal makeup work image 3", fallback: `${IMG}/gallery/image3.jpeg` },
-  { src: `${IMG}/gallery/image4.png`, alt: "Bridal makeup work image 4", fallback: `${IMG}/gallery/image4.png` },
-  { src: `${IMG}/gallery/image5.jpeg`, alt: "Bridal makeup work image 5", fallback: `${IMG}/gallery/image5.jpeg` },
-  { src: `${IMG}/gallery/image6.jpeg`, alt: "Bridal makeup work image 6", fallback: `${IMG}/gallery/image6.jpeg` },
-  { src: `${IMG}/gallery/image7.png`, alt: "Bridal makeup work image 7", fallback: `${IMG}/gallery/image7.png` },
-  { src: `${IMG}/gallery/image8.jpeg`, alt: "Bridal makeup work image 8", fallback: `${IMG}/gallery/image8.jpeg` },
-  { src: `${IMG}/gallery/image9.jpeg`, alt: "Bridal makeup work image 9", fallback: `${IMG}/gallery/image9.jpeg` },
-  { src: `${IMG}/gallery/image10.png`, alt: "Bridal makeup work image 10", fallback: `${IMG}/gallery/image10.png` },
-  { src: `${IMG}/gallery/image11.jpeg`, alt: "Bridal makeup work image 11", fallback: `${IMG}/gallery/image11.jpeg` },
-  { src: `${IMG}/gallery/image12.jpeg`, alt: "Bridal makeup work image 12", fallback: `${IMG}/gallery/image12.jpeg` },
-  { src: `${IMG}/gallery/image13.jpeg`, alt: "Bridal makeup work image 13", fallback: `${IMG}/gallery/image13.jpeg` },
-  { src: `${IMG}/gallery/image14.jpeg`, alt: "Bridal makeup work image 14", fallback: `${IMG}/gallery/image14.jpeg` },
-  { src: `${IMG}/gallery/image15.jpeg`, alt: "Bridal makeup work image 15", fallback: `${IMG}/gallery/image15.jpeg` },
-  { src: `${IMG}/gallery/image16.jpeg`, alt: "Bridal makeup work image 16", fallback: `${IMG}/gallery/image16.jpeg` },
-  { src: `${IMG}/gallery/image17.jpeg`, alt: "Bridal makeup work image 17", fallback: `${IMG}/gallery/image17.jpeg` },
-  { src: `${IMG}/gallery/image18.jpeg`, alt: "Bridal makeup work image 18", fallback: `${IMG}/gallery/image18.jpeg` },
-  { src: `${IMG}/gallery/image19.png`, alt: "Bridal makeup work image 19", fallback: `${IMG}/gallery/image19.png` },
-  { src: `${IMG}/gallery/image20.png`, alt: "Bridal makeup work image 20", fallback: `${IMG}/gallery/image20.png` },
-  { src: `${IMG}/gallery/image21.jpeg`, alt: "Bridal makeup work image 21", fallback: `${IMG}/gallery/image21.jpeg` },
-  { src: `${IMG}/gallery/image22.jpeg`, alt: "Bridal makeup work image 22", fallback: `${IMG}/gallery/image22.jpeg` },
-  { src: `${IMG}/gallery/image23.jpeg`, alt: "Bridal makeup work image 23", fallback: `${IMG}/gallery/image23.jpeg` },
-  { src: `${IMG}/gallery/image24.jpeg`, alt: "Bridal makeup work image 24", fallback: `${IMG}/gallery/image24.jpeg` },
-  { src: `${IMG}/gallery/image25.png`, alt: "Bridal makeup work image 25", fallback: `${IMG}/gallery/image25.png` },
-  { src: `${IMG}/gallery/image26.jpeg`, alt: "Bridal makeup work image 26", fallback: `${IMG}/gallery/image26.jpeg` },
-  { src: `${IMG}/gallery/image27.jpeg`, alt: "Bridal makeup work image 27", fallback: `${IMG}/gallery/image27.jpeg` },
-  { src: `${IMG}/gallery/image28.jpeg`, alt: "Bridal makeup work image 28", fallback: `${IMG}/gallery/image28.jpeg` },
+  { src: `${IMG}/gallery/image1.webp`, alt: "Bridal makeup work image 1", fallback: `${IMG}/gallery/image1.webp` },
+  { src: `${IMG}/gallery/image2.webp`, alt: "Bridal makeup work image 2", fallback: `${IMG}/gallery/image2.webp` },
+  { src: `${IMG}/gallery/image3.webp`, alt: "Bridal makeup work image 3", fallback: `${IMG}/gallery/image3.webp` },
+  { src: `${IMG}/gallery/image4.webp`, alt: "Bridal makeup work image 4", fallback: `${IMG}/gallery/image4.webp` },
+  { src: `${IMG}/gallery/image5.webp`, alt: "Bridal makeup work image 5", fallback: `${IMG}/gallery/image5.webp` },
+  { src: `${IMG}/gallery/image6.webp`, alt: "Bridal makeup work image 6", fallback: `${IMG}/gallery/image6.webp` },
+  { src: `${IMG}/gallery/image7.webp`, alt: "Bridal makeup work image 7", fallback: `${IMG}/gallery/image7.webp` },
+  { src: `${IMG}/gallery/image8.webp`, alt: "Bridal makeup work image 8", fallback: `${IMG}/gallery/image8.webp` },
+  { src: `${IMG}/gallery/image9.webp`, alt: "Bridal makeup work image 9", fallback: `${IMG}/gallery/image9.webp` },
+  { src: `${IMG}/gallery/image10.webp`, alt: "Bridal makeup work image 10", fallback: `${IMG}/gallery/image10.webp` },
+  { src: `${IMG}/gallery/image11.webp`, alt: "Bridal makeup work image 11", fallback: `${IMG}/gallery/image11.webp` },
+  { src: `${IMG}/gallery/image12.webp`, alt: "Bridal makeup work image 12", fallback: `${IMG}/gallery/image12.webp` },
+  { src: `${IMG}/gallery/image13.webp`, alt: "Bridal makeup work image 13", fallback: `${IMG}/gallery/image13.webp` },
+  { src: `${IMG}/gallery/image14.webp`, alt: "Bridal makeup work image 14", fallback: `${IMG}/gallery/image14.webp` },
+  { src: `${IMG}/gallery/image15.webp`, alt: "Bridal makeup work image 15", fallback: `${IMG}/gallery/image15.webp` },
+  { src: `${IMG}/gallery/image16.webp`, alt: "Bridal makeup work image 16", fallback: `${IMG}/gallery/image16.webp` },
+  { src: `${IMG}/gallery/image17.webp`, alt: "Bridal makeup work image 17", fallback: `${IMG}/gallery/image17.webp` },
+  { src: `${IMG}/gallery/image18.webp`, alt: "Bridal makeup work image 18", fallback: `${IMG}/gallery/image18.webp` },
+  { src: `${IMG}/gallery/image19.webp`, alt: "Bridal makeup work image 19", fallback: `${IMG}/gallery/image19.webp` },
+  { src: `${IMG}/gallery/image20.webp`, alt: "Bridal makeup work image 20", fallback: `${IMG}/gallery/image20.webp` },
+  { src: `${IMG}/gallery/image21.webp`, alt: "Bridal makeup work image 21", fallback: `${IMG}/gallery/image21.webp` },
+  { src: `${IMG}/gallery/image22.webp`, alt: "Bridal makeup work image 22", fallback: `${IMG}/gallery/image22.webp` },
+  { src: `${IMG}/gallery/image23.webp`, alt: "Bridal makeup work image 23", fallback: `${IMG}/gallery/image23.webp` },
+  { src: `${IMG}/gallery/image24.webp`, alt: "Bridal makeup work image 24", fallback: `${IMG}/gallery/image24.webp` },
+  { src: `${IMG}/gallery/image25.webp`, alt: "Bridal makeup work image 25", fallback: `${IMG}/gallery/image25.webp` },
+  { src: `${IMG}/gallery/image26.webp`, alt: "Bridal makeup work image 26", fallback: `${IMG}/gallery/image26.webp` },
+  { src: `${IMG}/gallery/image27.webp`, alt: "Bridal makeup work image 27", fallback: `${IMG}/gallery/image27.webp` },
+  { src: `${IMG}/gallery/image28.webp`, alt: "Bridal makeup work image 28", fallback: `${IMG}/gallery/image28.webp` },
 ];
 
 const faqItems = [
@@ -702,10 +702,10 @@ class Gallery extends React.Component {
     return <section id="gallery" className="section-anchor bg-[#fffdfb] py-20 sm:py-24"><div className="mx-auto max-w-[1420px] px-5 sm:px-6 lg:px-8 xl:px-10">
       <motion.div {...A.fadeUp(0)} className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><p className="section-kicker">BRIDAL GALLERY</p><h2 className="section-title">Looks that inspire your wedding-day mood</h2></div><button onClick={onBook} className="btn-secondary self-start">Book Your Look</button></motion.div>
       <div className="mt-10 gallery-grid">{galleryImages.map((item, index) => {
-        return <motion.button key={`${item.src}-${index}`} {...A.fadeUp(0.08 + index * 0.035)} onClick={() => this.setState({ selected: item })} className="group gallery-item"><img src={item.src} alt={item.alt} loading="lazy" referrerPolicy="no-referrer" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" onError={e => { if (item.fallback) { e.currentTarget.onerror = null; e.currentTarget.src = item.fallback; } }} /></motion.button>;
+        return <motion.button key={`${item.src}-${index}`} {...A.fadeUp(0.08 + index * 0.035)} onClick={() => this.setState({ selected: item })} className="group gallery-item"><img src={item.src} alt={item.alt} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" onError={e => { if (item.fallback) { e.currentTarget.onerror = null; e.currentTarget.src = item.fallback; } }} /></motion.button>;
       })}</div>
       <motion.div {...A.fadeUp(0.45)} className="mt-10 flex flex-col items-center text-center"><p className="text-[13px] leading-6 text-[#6b5f59]">Want to see more recent bridal looks and client work?</p><a href={CONFIG.instagramUrl} target="_blank" rel="noopener noreferrer" className="btn-primary btn-glow mt-4"><Icon name="instagram" size={17} /> View More Work on Instagram</a></motion.div>
-    </div>{this.state.selected && <div className="modal-backdrop fixed inset-0 z-[80] grid place-items-center bg-black/80 p-4" onClick={() => this.setState({ selected: null })}><button className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full bg-white text-[#70151c]" aria-label="Close image"><Icon name="close" /></button><img src={this.state.selected.src} alt={this.state.selected.alt} referrerPolicy="no-referrer" onError={e => { if (this.state.selected?.fallback) { e.currentTarget.onerror = null; e.currentTarget.src = this.state.selected.fallback; } }} className="lightbox-image max-w-[92vw] rounded-[24px]" /></div>}</section>;
+    </div>{this.state.selected && <div className="modal-backdrop fixed inset-0 z-[80] grid place-items-center bg-black/80 p-4" onClick={() => this.setState({ selected: null })}><button className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full bg-white text-[#70151c]" aria-label="Close image"><Icon name="close" /></button><img src={this.state.selected.src} alt={this.state.selected.alt} decoding="async" referrerPolicy="no-referrer" onError={e => { if (this.state.selected?.fallback) { e.currentTarget.onerror = null; e.currentTarget.src = this.state.selected.fallback; } }} className="lightbox-image max-w-[92vw] rounded-[24px]" /></div>}</section>;
   }
 }
 
