@@ -67,9 +67,9 @@ const serviceCategories = [
         details: "HD Makeup is designed for brides who want a clean, photo-ready finish that still looks elegant in person. The look is planned around your outfit, jewellery, skin preference and event timing, with extra attention to base blending, eye definition and long-event setting.",
         bestFor: "Wedding ceremony, reception and camera-focused bridal events",
         includes: ["Bridal look discussion", "Skin preparation and HD base", "Eye, lip and complexion detailing", "Final setting for the event"],
-        complimentary: ["Lens", "Lashes", "Hair Extension", "Hair Do", "Sweat-Proof Finish", "Water-Proof Finish", "Jewellery Set"],
+        complimentary: ["Lens", "Lashes", "Hair Extension", "Hair Do", "Sweat-Proof Finish", "Water-Proof Finish", "Jewellery Set", "Saree Draping"],
         price: "₹10,000",
-        note: "Final look and complimentary items can be coordinated with the bride before the event date.",
+        note: "Saree draping is available for this bridal makeup service — one or more sarees can be draped for the bride. Final look and complimentary items can also be coordinated before the event date.",
       },
       {
         name: "Ultra HD Makeup",
@@ -79,9 +79,9 @@ const serviceCategories = [
         details: "Ultra HD Makeup builds on the HD look with more detailed complexion work, refined finishing and face contouring for brides who want a more polished camera-ready result. The finish can be customised from soft bridal to defined glam based on the outfit and event style.",
         bestFor: "Main wedding, reception and high-resolution photography",
         includes: ["Detailed bridal look planning", "Ultra-HD style complexion finish", "Eye and lip detailing", "Face contouring and final setting"],
-        complimentary: ["Lens", "Lashes", "Hair Extension", "Hair Do", "Sweat-Proof Finish", "Water-Proof Finish", "Jewellery Set", "Face Contouring"],
+        complimentary: ["Lens", "Lashes", "Hair Extension", "Hair Do", "Sweat-Proof Finish", "Water-Proof Finish", "Jewellery Set", "Face Contouring", "Saree Draping"],
         price: "₹15,000",
-        note: "The final styling can be coordinated with outfit colours, jewellery and the bride's preferred finish.",
+        note: "Saree draping is available for this bridal makeup service — one or more sarees can be draped for the bride. The final styling can also be coordinated with outfit colours, jewellery and the bride's preferred finish.",
       },
       {
         name: "Signature Look",
@@ -91,9 +91,9 @@ const serviceCategories = [
         details: "The Signature Look is a more customised bridal package built around the bride's face, outfit, jewellery and event mood. Makeup, eye detailing, complexion shaping and hairstyle are planned together so the complete look feels cohesive rather than like separate services.",
         bestFor: "Brides wanting a fully coordinated premium wedding or reception look",
         includes: ["Personalised bridal look planning", "Premium complexion and eye detailing", "Face contouring and finishing", "Hair styling coordinated with the complete look"],
-        complimentary: ["Lens", "Lashes", "Hair Extension", "Hair Do", "Sweat-Proof Finish", "Water-Proof Finish", "Jewellery Set"],
+        complimentary: ["Lens", "Lashes", "Hair Extension", "Hair Do", "Sweat-Proof Finish", "Water-Proof Finish", "Jewellery Set", "Saree Draping"],
         price: "₹20,000",
-        note: "Reference looks, outfit photos and jewellery photos can be shared before the event for better look planning.",
+        note: "Saree draping is available for this bridal makeup service — one or more sarees can be draped for the bride. Reference looks, outfit photos and jewellery photos can also be shared before the event for better look planning.",
       },
       {
         name: "Glass Skin Finish Makeup",
@@ -103,9 +103,9 @@ const serviceCategories = [
         details: "Glass Skin Finish Makeup is designed for brides who prefer a luminous, fresh and polished complexion rather than a heavy matte appearance. The final finish is balanced for photography while keeping the skin-looking glow controlled and refined.",
         bestFor: "Brides who prefer a luminous premium finish for wedding or reception",
         includes: ["Skin-prep focused base", "Luminous complexion finish", "Soft contour and highlight placement", "Detailed eye, lip and final setting"],
-        complimentary: ["Lens", "Lashes", "Hair Extension", "Hair Do", "Sweat-Proof Finish", "Water-Proof Finish", "Jewellery Set"],
+        complimentary: ["Lens", "Lashes", "Hair Extension", "Hair Do", "Sweat-Proof Finish", "Water-Proof Finish", "Jewellery Set", "Saree Draping"],
         price: "₹25,000",
-        note: "The final glow level and coverage are adjusted to suit the bride's skin preference and event lighting.",
+        note: "Saree draping is available for this bridal makeup service — one or more sarees can be draped for the bride. The final glow level and coverage are also adjusted to suit the bride's skin preference and event lighting.",
       },
       {
         name: "Pre-Wedding Shoot Makeup",
@@ -439,26 +439,34 @@ const services = serviceCategories.flatMap(category =>
 );
 
 const galleryImages = [
-  { src: `${IMG}/gallery-1.webp`, alt: "Bridal makeup gallery portrait", fallback: `${IMG}/gallery-1.webp` },
-  { src: `${IMG}/gallery-2.webp`, alt: "Indian bridal makeup look gallery", fallback: `${IMG}/gallery-2.webp` },
-  { src: `${IMG}/gallery-3.webp`, alt: "Traditional bridal beauty look", fallback: `${IMG}/gallery-3.webp` },
-  { src: `${IMG}/bridal-1.webp`, alt: "Bridal makeup with traditional jewellery", fallback: `${IMG}/bridal-1.webp` },
-  { src: `${IMG}/bridal-2.webp`, alt: "Elegant wedding makeup look", fallback: `${IMG}/bridal-2.webp` },
-  { src: `${IMG}/bridal-3.webp`, alt: "Wedding makeup close-up", fallback: `${IMG}/bridal-3.webp` },
-  { src: `${IMG}/bridal-4.webp`, alt: "Traditional bridal styling portrait", fallback: `${IMG}/bridal-4.webp` },
-  { src: `${IMG}/bridal-5.webp`, alt: "Elegant bridal portrait", fallback: `${IMG}/bridal-5.webp` },
-  { src: `${IMG}/bridal-5.1.webp`, alt: "Soft bridal makeup finish", fallback: `${IMG}/bridal-5.1.webp` },
-  { src: `${IMG}/services/bridesmaid-makeup.webp`, alt: "Bridesmaid makeup look", fallback: `${IMG}/gallery-2.webp` },
-  { src: SERVICE_IMAGE_URLS['HD Makeup'], alt: "HD bridal makeup inspiration", fallback: `${IMG}/bridal-4.webp` },
-  { src: SERVICE_IMAGE_URLS['Ultra HD Makeup'], alt: "Ultra HD bridal makeup inspiration", fallback: `${IMG}/bridal-1.webp` },
-  { src: SERVICE_IMAGE_URLS['Signature Look'], alt: "Signature bridal makeup inspiration", fallback: `${IMG}/bridal-5.webp` },
-  { src: SERVICE_IMAGE_URLS['Glass Skin Finish Makeup'], alt: "Glass skin bridal makeup inspiration", fallback: `${IMG}/bridal-5.1.webp` },
-  { src: SERVICE_IMAGE_URLS['Pre-Wedding Shoot Makeup'], alt: "Pre-wedding makeup inspiration", fallback: `${IMG}/gallery-2.webp` },
-  { src: SERVICE_IMAGE_URLS['Mehendi — Organic Cones'], alt: "Bridal mehendi design", fallback: `${IMG}/bridal-3.webp` },
-  { src: SERVICE_IMAGE_URLS['Saree Pre-Pleating'], alt: "Saree draping and pre-pleating", fallback: `${IMG}/bridal-4.webp` },
-  { src: SERVICE_IMAGE_URLS['Hair Do & Hair Extensions'], alt: "Bridal hair styling with extensions", fallback: `${IMG}/bridal-5.webp` },
-  { src: SERVICE_IMAGE_URLS['Bridal Flower Making & Hair Floral Styling'], alt: "Bridal floral hair styling", fallback: `${IMG}/gallery-1.webp` },
-  { src: SERVICE_IMAGE_URLS['Golden Facial'], alt: "Golden facial bridal prep", fallback: `${IMG}/gallery-3.webp` },
+  { src: `${IMG}/gallery/image1.png`, alt: "Bridal makeup work image 1", fallback: `${IMG}/gallery/image1.png` },
+  { src: `${IMG}/gallery/image2.png`, alt: "Bridal makeup work image 2", fallback: `${IMG}/gallery/image2.png` },
+  { src: `${IMG}/gallery/image3.jpeg`, alt: "Bridal makeup work image 3", fallback: `${IMG}/gallery/image3.jpeg` },
+  { src: `${IMG}/gallery/image4.png`, alt: "Bridal makeup work image 4", fallback: `${IMG}/gallery/image4.png` },
+  { src: `${IMG}/gallery/image5.jpeg`, alt: "Bridal makeup work image 5", fallback: `${IMG}/gallery/image5.jpeg` },
+  { src: `${IMG}/gallery/image6.jpeg`, alt: "Bridal makeup work image 6", fallback: `${IMG}/gallery/image6.jpeg` },
+  { src: `${IMG}/gallery/image7.png`, alt: "Bridal makeup work image 7", fallback: `${IMG}/gallery/image7.png` },
+  { src: `${IMG}/gallery/image8.jpeg`, alt: "Bridal makeup work image 8", fallback: `${IMG}/gallery/image8.jpeg` },
+  { src: `${IMG}/gallery/image9.jpeg`, alt: "Bridal makeup work image 9", fallback: `${IMG}/gallery/image9.jpeg` },
+  { src: `${IMG}/gallery/image10.png`, alt: "Bridal makeup work image 10", fallback: `${IMG}/gallery/image10.png` },
+  { src: `${IMG}/gallery/image11.jpeg`, alt: "Bridal makeup work image 11", fallback: `${IMG}/gallery/image11.jpeg` },
+  { src: `${IMG}/gallery/image12.jpeg`, alt: "Bridal makeup work image 12", fallback: `${IMG}/gallery/image12.jpeg` },
+  { src: `${IMG}/gallery/image13.jpeg`, alt: "Bridal makeup work image 13", fallback: `${IMG}/gallery/image13.jpeg` },
+  { src: `${IMG}/gallery/image14.jpeg`, alt: "Bridal makeup work image 14", fallback: `${IMG}/gallery/image14.jpeg` },
+  { src: `${IMG}/gallery/image15.jpeg`, alt: "Bridal makeup work image 15", fallback: `${IMG}/gallery/image15.jpeg` },
+  { src: `${IMG}/gallery/image16.jpeg`, alt: "Bridal makeup work image 16", fallback: `${IMG}/gallery/image16.jpeg` },
+  { src: `${IMG}/gallery/image17.jpeg`, alt: "Bridal makeup work image 17", fallback: `${IMG}/gallery/image17.jpeg` },
+  { src: `${IMG}/gallery/image18.jpeg`, alt: "Bridal makeup work image 18", fallback: `${IMG}/gallery/image18.jpeg` },
+  { src: `${IMG}/gallery/image19.png`, alt: "Bridal makeup work image 19", fallback: `${IMG}/gallery/image19.png` },
+  { src: `${IMG}/gallery/image20.png`, alt: "Bridal makeup work image 20", fallback: `${IMG}/gallery/image20.png` },
+  { src: `${IMG}/gallery/image21.jpeg`, alt: "Bridal makeup work image 21", fallback: `${IMG}/gallery/image21.jpeg` },
+  { src: `${IMG}/gallery/image22.jpeg`, alt: "Bridal makeup work image 22", fallback: `${IMG}/gallery/image22.jpeg` },
+  { src: `${IMG}/gallery/image23.jpeg`, alt: "Bridal makeup work image 23", fallback: `${IMG}/gallery/image23.jpeg` },
+  { src: `${IMG}/gallery/image24.jpeg`, alt: "Bridal makeup work image 24", fallback: `${IMG}/gallery/image24.jpeg` },
+  { src: `${IMG}/gallery/image25.png`, alt: "Bridal makeup work image 25", fallback: `${IMG}/gallery/image25.png` },
+  { src: `${IMG}/gallery/image26.jpeg`, alt: "Bridal makeup work image 26", fallback: `${IMG}/gallery/image26.jpeg` },
+  { src: `${IMG}/gallery/image27.jpeg`, alt: "Bridal makeup work image 27", fallback: `${IMG}/gallery/image27.jpeg` },
+  { src: `${IMG}/gallery/image28.jpeg`, alt: "Bridal makeup work image 28", fallback: `${IMG}/gallery/image28.jpeg` },
 ];
 
 const faqItems = [
@@ -649,6 +657,17 @@ class Services extends React.Component {
   }
 }
 
+function ServiceNote({ note }) {
+  const parts = note.split("Saree Draping");
+  if (parts.length === 1) return note;
+  return parts.map((part, i) => (
+    <React.Fragment key={i}>
+      {part}
+      {i < parts.length - 1 && <strong className="font-bold text-[#7a111a]">Saree Draping</strong>}
+    </React.Fragment>
+  ));
+}
+
 class ServiceModal extends React.Component {
   componentDidMount() { this.keyHandler = e => e.key === "Escape" && this.props.onClose(); document.addEventListener("keydown", this.keyHandler); document.body.style.overflow = "hidden"; }
   componentWillUnmount() { document.removeEventListener("keydown", this.keyHandler); document.body.style.overflow = ""; }
@@ -662,7 +681,7 @@ class ServiceModal extends React.Component {
       <h3 className="mt-4 text-[10px] font-bold uppercase tracking-[.14em] text-[#7b252b] sm:mt-6">What this service includes</h3><div className="mt-2 grid gap-1.5 sm:mt-3 sm:grid-cols-2 sm:gap-2">{service.includes.map(item => <div key={item} className="flex gap-2 text-[12px] leading-5 text-[#554a45] sm:gap-3 sm:text-[13px]"><span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-[#7a111a] text-white sm:h-5 sm:w-5"><Icon name="check" size={10} /></span>{item}</div>)}</div>
       {hasComplimentary && <><h3 className="mt-5 text-[10px] font-bold uppercase tracking-[.14em] text-[#7b252b]">Complimentary</h3><div className="mt-2 flex flex-wrap gap-2">{service.complimentary.map(item => <span key={item} className="rounded-full border border-[#dfc9bd] bg-[#fff8f4] px-3 py-1.5 text-[10px] font-semibold text-[#6f292d] sm:text-[11px]">{item}</span>)}</div></>}
       {hasCatalogs && <div className="mt-5 rounded-[20px] border border-[#e1d0c4] bg-[#fbf4ee] p-4"><h3 className="text-[10px] font-bold uppercase tracking-[.14em] text-[#7b252b]">Jewellery Catalogues</h3><p className="mt-1.5 text-[11px] leading-5 text-[#74665f]">Open either catalogue to browse the full jewellery sets.</p><div className="mt-3 flex flex-wrap gap-2">{service.catalogs.map(catalog => <a key={catalog.label} href={catalog.href} target="_blank" rel="noopener noreferrer" className="btn-secondary !px-4 !py-2 !text-[11px]"><Icon name="book" size={14} /> {catalog.label}</a>)}</div></div>}
-      <p className="mt-4 rounded-[18px] bg-[#f4e7dc] p-3 text-[11px] leading-5 text-[#6f5b52] sm:mt-6 sm:rounded-[22px] sm:p-4 sm:text-[12px]">{service.note}</p><div className="mt-4 flex flex-wrap gap-2 sm:mt-6 sm:gap-3"><button onClick={onBook} className="btn-primary !px-4 !py-2.5 !text-[12px] sm:!px-5 sm:!py-3 sm:!text-[14px]"><Icon name="calendar" size={15} /> Book This Service</button><button onClick={onClose} className="btn-secondary !px-4 !py-2.5 !text-[12px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Close</button></div></div></div></div></div>;
+      <p className="mt-4 rounded-[18px] bg-[#f4e7dc] p-3 text-[11px] leading-5 text-[#6f5b52] sm:mt-6 sm:rounded-[22px] sm:p-4 sm:text-[12px]"><ServiceNote note={service.note} /></p><div className="mt-4 flex flex-wrap gap-2 sm:mt-6 sm:gap-3"><button onClick={onBook} className="btn-primary !px-4 !py-2.5 !text-[12px] sm:!px-5 sm:!py-3 sm:!text-[14px]"><Icon name="calendar" size={15} /> Book This Service</button><button onClick={onClose} className="btn-secondary !px-4 !py-2.5 !text-[12px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Close</button></div></div></div></div></div>;
   }
 }
 
