@@ -630,6 +630,20 @@ function About({ onBook }) {
         <div className="mt-5 grid gap-2.5 sm:mt-7 sm:grid-cols-2 sm:gap-3">{[["Personalised Looks", "Created around your features and personal style"], ["Bridal-Focused Beauty", "Thoughtful styling for your wedding celebrations"], ["Chennai Bookings", "Primary service area for bridal appointments"], ["Across Tamil Nadu", "Wedding bookings accepted throughout Tamil Nadu"]].map(([title, desc], i) => <motion.div key={title} {...A.fadeUp(0.3 + i * 0.08)} className="flex gap-2.5 rounded-[18px] border border-[#eadfd5] bg-[#fbf6f1] p-3.5 sm:gap-3 sm:rounded-[22px] sm:p-4"><span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#7a111a] text-white sm:h-6 sm:w-6"><Icon name="check" size={12} /></span><div><strong className="block text-[12px] text-[#29211e] sm:text-[13px]">{title}</strong><span className="mt-0.5 block text-[11px] leading-4 text-[#746963] sm:mt-1 sm:text-[12px] sm:leading-5">{desc}</span></div></motion.div>)}</div>
         <motion.div {...A.fadeUp(0.6)} className="mt-6 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3"><button onClick={onBook} className="btn-primary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Book an Appointment</button><button onClick={() => scrollToSection("gallery")} className="btn-secondary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">See Makeup Work</button></motion.div></div></motion.div>
     </div>
+    <motion.div {...A.fadeUp(0.15)} className="mx-auto mt-10 max-w-[1420px] px-5 sm:mt-12 sm:px-6 lg:px-8">
+      <div className="border-t border-[#eadfd5] pt-8 sm:pt-10">
+        <p className="section-kicker uppercase">Professional Experience &amp; Training</p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4">
+          {[["5+ Years", "Professional Experience"], ["200+", "Happy Clients"]].map(([value, label]) => <div key={label} className="flex min-h-[88px] items-center gap-4 rounded-[20px] border border-[#dfc9bd] bg-[#fbf6f1] px-5 py-4 sm:min-h-[96px] sm:px-6"><strong className="brand-serif shrink-0 text-[34px] leading-none text-[#7a111a] sm:text-[40px]">{value}</strong><span className="h-10 w-px shrink-0 bg-[#c8a36b]" /><span className="text-[12px] font-bold uppercase leading-5 tracking-[.08em] text-[#5f4a42] sm:text-[13px]">{label}</span></div>)}
+        </div>
+        <div className="mt-7 sm:mt-8">
+          <h3 className="brand-serif text-[25px] leading-tight text-[#211815] sm:text-[30px]">Courses &amp; Specialisations</h3>
+          <div className="mt-4 grid grid-cols-1 gap-2.5 min-[420px]:grid-cols-2 sm:gap-3 lg:grid-cols-3">
+            {["Makeup Course", "Beautician Course", "Hairstyling Course", "Mehendi Course", "Bridal Hairdo Course", "Nail Extension Course", "HydraFacial Course", "Massage & Spa Course", "Hair Treatment Course"].map(course => <div key={course} className="flex min-h-[52px] items-center gap-3 rounded-[18px] border border-[#eadfd5] bg-[#fffaf6] px-4 py-3"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#7a111a] text-[#f1d3a0]"><Icon name="check" size={13} /></span><span className="text-[12px] font-semibold leading-5 text-[#4d3c36] sm:text-[13px]">{course}</span></div>)}
+          </div>
+        </div>
+      </div>
+    </motion.div>
   </section>;
 }
 
