@@ -10,8 +10,8 @@ const A = {
 const IMG = import.meta.env.BASE_URL + "assets/images";
 
 const CONFIG = {
-  whatsappNumber: "7449189676",
-  phoneDisplay: "pending",
+  whatsappNumber: "9150109056",
+  phoneDisplay: "9150109056",
   instagramUrl: "https://instagram.com/suji_makeover_in_chennai_1",
   instagramHandle: "suji_makeover_in_chennai_1",
   email: "suji.makeover@gmail.com",
@@ -439,34 +439,34 @@ const services = serviceCategories.flatMap(category =>
 );
 
 const galleryImages = [
-  { src: `${IMG}/gallery/image1.webp`, alt: "Bridal makeup work image 1", fallback: `${IMG}/gallery/image1.webp` },
-  { src: `${IMG}/gallery/image2.webp`, alt: "Bridal makeup work image 2", fallback: `${IMG}/gallery/image2.webp` },
-  { src: `${IMG}/gallery/image3.webp`, alt: "Bridal makeup work image 3", fallback: `${IMG}/gallery/image3.webp` },
-  { src: `${IMG}/gallery/image4.webp`, alt: "Bridal makeup work image 4", fallback: `${IMG}/gallery/image4.webp` },
-  { src: `${IMG}/gallery/image5.webp`, alt: "Bridal makeup work image 5", fallback: `${IMG}/gallery/image5.webp` },
-  { src: `${IMG}/gallery/image6.webp`, alt: "Bridal makeup work image 6", fallback: `${IMG}/gallery/image6.webp` },
-  { src: `${IMG}/gallery/image7.webp`, alt: "Bridal makeup work image 7", fallback: `${IMG}/gallery/image7.webp` },
-  { src: `${IMG}/gallery/image8.webp`, alt: "Bridal makeup work image 8", fallback: `${IMG}/gallery/image8.webp` },
-  { src: `${IMG}/gallery/image9.webp`, alt: "Bridal makeup work image 9", fallback: `${IMG}/gallery/image9.webp` },
-  { src: `${IMG}/gallery/image10.webp`, alt: "Bridal makeup work image 10", fallback: `${IMG}/gallery/image10.webp` },
-  { src: `${IMG}/gallery/image11.webp`, alt: "Bridal makeup work image 11", fallback: `${IMG}/gallery/image11.webp` },
-  { src: `${IMG}/gallery/image12.webp`, alt: "Bridal makeup work image 12", fallback: `${IMG}/gallery/image12.webp` },
-  { src: `${IMG}/gallery/image13.webp`, alt: "Bridal makeup work image 13", fallback: `${IMG}/gallery/image13.webp` },
-  { src: `${IMG}/gallery/image14.webp`, alt: "Bridal makeup work image 14", fallback: `${IMG}/gallery/image14.webp` },
-  { src: `${IMG}/gallery/image15.webp`, alt: "Bridal makeup work image 15", fallback: `${IMG}/gallery/image15.webp` },
-  { src: `${IMG}/gallery/image16.webp`, alt: "Bridal makeup work image 16", fallback: `${IMG}/gallery/image16.webp` },
-  { src: `${IMG}/gallery/image17.webp`, alt: "Bridal makeup work image 17", fallback: `${IMG}/gallery/image17.webp` },
-  { src: `${IMG}/gallery/image18.webp`, alt: "Bridal makeup work image 18", fallback: `${IMG}/gallery/image18.webp` },
-  { src: `${IMG}/gallery/image19.webp`, alt: "Bridal makeup work image 19", fallback: `${IMG}/gallery/image19.webp` },
-  { src: `${IMG}/gallery/image20.webp`, alt: "Bridal makeup work image 20", fallback: `${IMG}/gallery/image20.webp` },
-  { src: `${IMG}/gallery/image21.webp`, alt: "Bridal makeup work image 21", fallback: `${IMG}/gallery/image21.webp` },
-  { src: `${IMG}/gallery/image22.webp`, alt: "Bridal makeup work image 22", fallback: `${IMG}/gallery/image22.webp` },
-  { src: `${IMG}/gallery/image23.webp`, alt: "Bridal makeup work image 23", fallback: `${IMG}/gallery/image23.webp` },
-  { src: `${IMG}/gallery/image24.webp`, alt: "Bridal makeup work image 24", fallback: `${IMG}/gallery/image24.webp` },
-  { src: `${IMG}/gallery/image25.webp`, alt: "Bridal makeup work image 25", fallback: `${IMG}/gallery/image25.webp` },
-  { src: `${IMG}/gallery/image26.webp`, alt: "Bridal makeup work image 26", fallback: `${IMG}/gallery/image26.webp` },
-  { src: `${IMG}/gallery/image27.webp`, alt: "Bridal makeup work image 27", fallback: `${IMG}/gallery/image27.webp` },
-  { src: `${IMG}/gallery/image28.webp`, alt: "Bridal makeup work image 28", fallback: `${IMG}/gallery/image28.webp` },
+  { src: `${IMG}/gallery/image1.webp`, alt: "Bride in a green and purple silk saree with bridal makeup and gold jewellery", width: 901, height: 1200, fallback: `${IMG}/gallery/image1.webp` },
+  { src: `${IMG}/gallery/image2.webp`, alt: "South Indian bride in red and green wedding attire looking down at her mehendi", width: 800, height: 1200, fallback: `${IMG}/gallery/image2.webp` },
+  { src: `${IMG}/gallery/image3.webp`, alt: "Bride in a green and pink silk saree with traditional wedding makeup", width: 742, height: 868, fallback: `${IMG}/gallery/image3.webp` },
+  { src: `${IMG}/gallery/image4.webp`, alt: "Bride adjusting her earring in bright pink and green wedding attire", width: 800, height: 1200, fallback: `${IMG}/gallery/image4.webp` },
+  { src: `${IMG}/gallery/image5.webp`, alt: "South Indian bride in an orange silk saree with bridal makeup and temple jewellery", width: 537, height: 1200, fallback: `${IMG}/gallery/image5.webp` },
+  { src: `${IMG}/gallery/image6.webp`, alt: "Bride in a blue and yellow silk saree with eye makeup and bridal jewellery", width: 675, height: 1200, fallback: `${IMG}/gallery/image6.webp` },
+  { src: `${IMG}/gallery/image7.webp`, alt: "Close-up of a bride with gold jewellery, floral hair styling and wedding makeup", width: 1200, height: 814, fallback: `${IMG}/gallery/image7.webp` },
+  { src: `${IMG}/gallery/image8.webp`, alt: "Bride in a red and gold silk saree with traditional bridal makeup", width: 675, height: 1200, fallback: `${IMG}/gallery/image8.webp` },
+  { src: `${IMG}/gallery/image9.webp`, alt: "Close-up bridal portrait with red lip makeup and wedding jewellery", width: 673, height: 712, fallback: `${IMG}/gallery/image9.webp` },
+  { src: `${IMG}/gallery/image10.webp`, alt: "Bride in a red silk saree posing with traditional jewellery and hairstyling", width: 799, height: 1200, fallback: `${IMG}/gallery/image10.webp` },
+  { src: `${IMG}/gallery/image11.webp`, alt: "Seated bride with a veil, wedding makeup and gold jewellery", width: 953, height: 1200, fallback: `${IMG}/gallery/image11.webp` },
+  { src: `${IMG}/gallery/image12.webp`, alt: "Bride and groom in wedding attire with floral garlands", width: 1118, height: 1391, fallback: `${IMG}/gallery/image12.webp` },
+  { src: `${IMG}/gallery/image13.webp`, alt: "Bride and groom walking during an outdoor wedding ceremony", width: 1098, height: 1433, fallback: `${IMG}/gallery/image13.webp` },
+  { src: `${IMG}/gallery/image14.webp`, alt: "Woman in a black evening dress with event makeup and styled hair", width: 807, height: 1200, fallback: `${IMG}/gallery/image14.webp` },
+  { src: `${IMG}/gallery/image15.webp`, alt: "Bride in a green silk saree with bridal makeup and jasmine hair flowers", width: 900, height: 1200, fallback: `${IMG}/gallery/image15.webp` },
+  { src: `${IMG}/gallery/image16.webp`, alt: "Bride in dark reception attire posing with family members", width: 1128, height: 1200, fallback: `${IMG}/gallery/image16.webp` },
+  { src: `${IMG}/gallery/image17.webp`, alt: "Woman in a blue gown with evening makeup and curled hairstyle", width: 1013, height: 1200, fallback: `${IMG}/gallery/image17.webp` },
+  { src: `${IMG}/gallery/image18.webp`, alt: "Bride in a blue and red silk saree wearing traditional wedding jewellery", width: 689, height: 1066, fallback: `${IMG}/gallery/image18.webp` },
+  { src: `${IMG}/gallery/image19.webp`, alt: "Bride in a red silk saree with gold jewellery and bridal makeup", width: 675, height: 1200, fallback: `${IMG}/gallery/image19.webp` },
+  { src: `${IMG}/gallery/image20.webp`, alt: "Bride in a green silk saree with traditional makeup and gold jewellery", width: 1200, height: 1200, fallback: `${IMG}/gallery/image20.webp` },
+  { src: `${IMG}/gallery/image21.webp`, alt: "Blue bridal lehenga with embroidered details and jewellery", width: 629, height: 1200, fallback: `${IMG}/gallery/image21.webp` },
+  { src: `${IMG}/gallery/image22.webp`, alt: "Woman in a silver saree with formal makeup and styled hair", width: 900, height: 1200, fallback: `${IMG}/gallery/image22.webp` },
+  { src: `${IMG}/gallery/image23.webp`, alt: "Bride in a pink and blue silk saree with wedding makeup and gold jewellery", width: 900, height: 1200, fallback: `${IMG}/gallery/image23.webp` },
+  { src: `${IMG}/gallery/image24.webp`, alt: "Bridal portrait in a green saree with defined eye makeup and jewellery", width: 940, height: 1200, fallback: `${IMG}/gallery/image24.webp` },
+  { src: `${IMG}/gallery/image25.webp`, alt: "Bride in a pink silk saree with traditional wedding makeup and gold jewellery", width: 958, height: 1200, fallback: `${IMG}/gallery/image25.webp` },
+  { src: `${IMG}/gallery/image26.webp`, alt: "Woman in a gold embellished gown with formal makeup and hairstyle", width: 900, height: 1200, fallback: `${IMG}/gallery/image26.webp` },
+  { src: `${IMG}/gallery/image27.webp`, alt: "Seated bride in a purple reception gown with bridal makeup", width: 1183, height: 1200, fallback: `${IMG}/gallery/image27.webp` },
+  { src: `${IMG}/gallery/image28.webp`, alt: "Bridal portrait in a navy silk saree with gold jewellery and wedding makeup", width: 800, height: 1200, fallback: `${IMG}/gallery/image28.webp` },
 ];
 
 const faqItems = [
@@ -547,7 +547,7 @@ function Brand({ white }) {
       <span className="brand-serif grid h-11 w-11 place-items-center rounded-full border border-white/30 text-white">RS</span>
     ) : (
       <span className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[14px] border border-[#eadfd5] bg-[#fbf6f1] shadow-[0_5px_16px_rgba(76,35,28,.08)] sm:h-[54px] sm:w-[54px]">
-        <img src={`${IMG}/rs-bridal-brand-logo.webp`} alt="RS Bridal brand logo" className="h-full w-full object-contain" />
+        <img src={`${IMG}/rs-bridal-brand-logo.webp`} alt="RS Bridal brand logo" width="700" height="700" className="h-full w-full object-contain" />
       </span>
     )}
     <span><strong className={`brand-serif block text-[20px] tracking-[.05em] ${white ? "text-white" : "text-[#4f171b]"}`}>RS BRIDAL</strong><span className={`block text-[10px] tracking-[.1em] ${white ? "text-white/60" : "text-[#8a7168]"}`}>MAKEUP ARTIST</span></span></button>;
@@ -601,8 +601,10 @@ function Hero({ onBook }) {
           <img
             src={heroImage}
             alt="Indian bride wearing traditional red bridal attire showcasing bridal makeup by RS Bridal"
+            width="1401"
+            height="1024"
             loading="eager"
-            fetchPriority="high"
+            fetchpriority="high"
             className="h-full w-full object-cover object-top sm:object-center lg:object-[72%_center]"
           />
           <div
@@ -626,7 +628,7 @@ function Hero({ onBook }) {
 function About({ onBook }) {
   return <section id="about" className="section-anchor bg-[#fffdfb] py-20 sm:py-24">
     <div className="mx-auto grid max-w-[1420px] items-center gap-8 px-5 sm:gap-10 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:gap-16 lg:px-8">
-      <motion.div {...A.slideLeft(0.1)} className="relative"><div className="mx-auto max-w-[320px] overflow-hidden rounded-[24px] border border-[#eadfd5] bg-[#f3e5da] shadow-[0_16px_40px_rgba(69,35,27,.10)] sm:max-w-[400px] sm:rounded-[30px] sm:shadow-[0_22px_60px_rgba(69,35,27,.12)]"><img src={`${IMG}/services/artist.jpeg`} alt="RS Bridal makeup artist portrait" className="h-[380px] w-full object-cover object-top sm:h-[520px]" /></div></motion.div>
+      <motion.div {...A.slideLeft(0.1)} className="relative"><div className="mx-auto max-w-[320px] overflow-hidden rounded-[24px] border border-[#eadfd5] bg-[#f3e5da] shadow-[0_16px_40px_rgba(69,35,27,.10)] sm:max-w-[400px] sm:rounded-[30px] sm:shadow-[0_22px_60px_rgba(69,35,27,.12)]"><img src={`${IMG}/services/artist.jpeg`} alt="RS Bridal makeup artist portrait" width="745" height="1825" loading="lazy" decoding="async" className="h-[380px] w-full object-cover object-top sm:h-[520px]" /></div></motion.div>
       <motion.div {...A.slideRight(0.15)}><div><p className="section-kicker">ABOUT RS BRIDAL</p><h2 className="section-title text-[28px] leading-[1.1] sm:text-[clamp(2.45rem,4.2vw,3rem)]">Beauty That Feels Like You</h2><p className="mt-3 text-[13px] font-semibold tracking-[.04em] text-[#8a363b] sm:mt-4 sm:text-[14px]">Personalised bridal artistry for your most meaningful celebrations.</p><p className="mt-4 text-[14px] leading-6 text-[#655a54] sm:mt-6 sm:text-[15px] sm:leading-7">RS Bridal is built around one simple idea — every bride should feel like the most confident and beautiful version of herself on her wedding day. Each look is thoughtfully planned around the bride's features, outfit, jewellery, occasion, and personal preference rather than following one fixed makeup style.</p><p className="mt-3 text-[14px] leading-6 text-[#655a54] sm:mt-4 sm:text-[15px] sm:leading-7">Originally from Trichy and primarily serving bridal clients in Chennai, RS Bridal accepts wedding and beauty bookings across Tamil Nadu. Whether the celebration is intimate or grand, the focus remains on creating an elegant, comfortable, and timeless look that feels truly personal to the bride.</p>
         <div className="mt-5 grid gap-2.5 sm:mt-7 sm:grid-cols-2 sm:gap-3">{[["Personalised Looks", "Created around your features and personal style"], ["Bridal-Focused Beauty", "Thoughtful styling for your wedding celebrations"], ["Chennai Bookings", "Primary service area for bridal appointments"], ["Across Tamil Nadu", "Wedding bookings accepted throughout Tamil Nadu"]].map(([title, desc], i) => <motion.div key={title} {...A.fadeUp(0.3 + i * 0.08)} className="flex gap-2.5 rounded-[18px] border border-[#eadfd5] bg-[#fbf6f1] p-3.5 sm:gap-3 sm:rounded-[22px] sm:p-4"><span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#7a111a] text-white sm:h-6 sm:w-6"><Icon name="check" size={12} /></span><div><strong className="block text-[12px] text-[#29211e] sm:text-[13px]">{title}</strong><span className="mt-0.5 block text-[11px] leading-4 text-[#746963] sm:mt-1 sm:text-[12px] sm:leading-5">{desc}</span></div></motion.div>)}</div>
         <motion.div {...A.fadeUp(0.6)} className="mt-6 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3"><button onClick={onBook} className="btn-primary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Book an Appointment</button><button onClick={() => scrollToSection("gallery")} className="btn-secondary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">See Makeup Work</button></motion.div></div></motion.div>
@@ -717,7 +719,7 @@ class Gallery extends React.Component {
     return <section id="gallery" className="section-anchor bg-[#fffdfb] py-20 sm:py-24"><div className="mx-auto max-w-[1420px] px-5 sm:px-6 lg:px-8 xl:px-10">
       <motion.div {...A.fadeUp(0)} className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><p className="section-kicker">BRIDAL GALLERY</p><h2 className="section-title">Looks that inspire your wedding-day mood</h2></div><button onClick={onBook} className="btn-secondary self-start">Book Your Look</button></motion.div>
       <div className="mt-10 gallery-grid">{galleryImages.map((item, index) => {
-        return <motion.button key={`${item.src}-${index}`} {...A.fadeUp(0.08 + index * 0.035)} onClick={() => this.setState({ selected: item })} className="group gallery-item"><img src={item.src} alt={item.alt} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" onError={e => { if (item.fallback) { e.currentTarget.onerror = null; e.currentTarget.src = item.fallback; } }} /></motion.button>;
+        return <motion.button key={`${item.src}-${index}`} {...A.fadeUp(0.08 + index * 0.035)} onClick={() => this.setState({ selected: item })} className="group gallery-item"><img src={item.src} alt={item.alt} width={item.width} height={item.height} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" onError={e => { if (item.fallback) { e.currentTarget.onerror = null; e.currentTarget.src = item.fallback; } }} /></motion.button>;
       })}</div>
       <motion.div {...A.fadeUp(0.45)} className="mt-10 flex flex-col items-center text-center"><p className="text-[13px] leading-6 text-[#6b5f59]">Want to see more recent bridal looks and client work?</p><a href={CONFIG.instagramUrl} target="_blank" rel="noopener noreferrer" className="btn-primary btn-glow mt-4"><Icon name="instagram" size={17} /> View More Work on Instagram</a></motion.div>
     </div>{this.state.selected && <div className="modal-backdrop fixed inset-0 z-[80] grid place-items-center bg-black/80 p-4" onClick={() => this.setState({ selected: null })}><button className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full bg-white text-[#70151c]" aria-label="Close image"><Icon name="close" /></button><img src={this.state.selected.src} alt={this.state.selected.alt} decoding="async" referrerPolicy="no-referrer" onError={e => { if (this.state.selected?.fallback) { e.currentTarget.onerror = null; e.currentTarget.src = this.state.selected.fallback; } }} className="lightbox-image max-w-[92vw] rounded-[24px]" /></div>}</section>;
