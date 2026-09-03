@@ -14,7 +14,7 @@ const CONFIG = {
   phoneDisplay: "9150109056",
   instagramUrl: "https://instagram.com/suji_makeover_in_chennai_1",
   instagramHandle: "suji_makeover_in_chennai_1",
-  email: "suji.makeover@gmail.com",
+  email: "sujimakeover1@gmail.com",
   primaryArea: "Chennai, Tamil Nadu",
 };
 
