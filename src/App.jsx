@@ -603,7 +603,11 @@ function applyHeadMetadata(metadata) {
   };
 
   const setCanonical = value => {
-    let canonical = document.head.querySelector('link[rel="canonical"]');
+    const canonicals = Array.from(document.head.querySelectorAll('link[rel="canonical"]'));
+    let canonical = canonicals[0] || null;
+    if (canonicals.length > 1) {
+      canonicals.slice(1).forEach(tag => tag.remove());
+    }
     if (!canonical) {
       canonical = document.createElement("link");
       canonical.setAttribute("rel", "canonical");

@@ -8,6 +8,27 @@
     <link rel="icon" type="image/png" sizes="96x96" href="public/favicon-48x48.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="public/apple-touch-icon.png" />
     <link rel="canonical" href="https://www.rsbridal.in/" />
+    <script>
+      (function () {
+        var base = "https://www.rsbridal.in";
+        var path = (window.location.pathname || "/").replace(/\/+$/, "") || "/";
+        var map = {
+          "/": base + "/",
+          "/bridal-makeup-artist-chennai": base + "/bridal-makeup-artist-chennai",
+          "/about-suji": base + "/about-suji"
+        };
+        var target = map[path] || map["/"];
+        var tags = document.head.querySelectorAll('link[rel="canonical"]');
+        var canonical = tags[0];
+        for (var i = tags.length - 1; i > 0; i--) tags[i].parentNode.removeChild(tags[i]);
+        if (!canonical) {
+          canonical = document.createElement("link");
+          canonical.setAttribute("rel", "canonical");
+          document.head.appendChild(canonical);
+        }
+        canonical.setAttribute("href", target);
+      })();
+    </script>
 
     <meta name="theme-color" content="#7a111a" />
 
