@@ -1,5 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import BridalMakeupChennai from "./pages/BridalMakeupChennai";
+import AboutSuji from "./pages/AboutSuji";
 
 const A = {
   fadeUp: (d = 0) => ({ initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.15 }, transition: { duration: 0.5, ease: "easeOut", delay: d } }),
@@ -17,6 +19,9 @@ const CONFIG = {
   email: "sujimakeover1@gmail.com",
   primaryArea: "Chennai, Tamil Nadu",
 };
+
+const CHENNAI_PAGE_PATH = "/bridal-makeup-artist-chennai";
+const ABOUT_SUJI_PAGE_PATH = "/about-suji";
 
 const heroImage = `${IMG}/bidal-home.png`;
 
@@ -520,25 +525,118 @@ function Icon({ name, size = 20 }) {
   return <svg {...common}>{paths[name] || paths.sparkles}</svg>;
 }
 
-function routeFromHash() {
+function normalizePathname(pathname) {
+  if (!pathname || pathname === "/") return "/";
+  return pathname.replace(/\/+$/, "");
+}
+
+function routeFromLocation() {
   if (typeof window === "undefined") return "home";
+  if (normalizePathname(window.location.pathname) === CHENNAI_PAGE_PATH) return "bridal-makeup-artist-chennai";
+  if (normalizePathname(window.location.pathname) === ABOUT_SUJI_PAGE_PATH) return "about-suji";
   if (window.location.hash === "#book") return "book";
   return "home";
 }
 
 function navigateTo(route) {
-  if (route === "home") window.location.hash = "";
-  else window.location.hash = route;
+  if (route === "home") {
+    if (window.location.pathname !== "/" || window.location.hash) {
+      window.history.pushState({}, "", "/");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    }
+  } else if (route === "bridal-makeup-artist-chennai") {
+    if (normalizePathname(window.location.pathname) !== CHENNAI_PAGE_PATH) {
+      window.history.pushState({}, "", CHENNAI_PAGE_PATH);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    }
+  } else if (route === "about-suji") {
+    if (normalizePathname(window.location.pathname) !== ABOUT_SUJI_PAGE_PATH) {
+      window.history.pushState({}, "", ABOUT_SUJI_PAGE_PATH);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    }
+  } else {
+    if (window.location.pathname !== "/") {
+      window.history.pushState({}, "", `/#${route}`);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    } else {
+      window.location.hash = route;
+    }
+  }
   window.scrollTo({ top: 0, behavior: "auto" });
 }
 
 function scrollToSection(id) {
-  if (routeFromHash() !== "home") {
-    window.location.hash = "";
+  if (routeFromLocation() !== "home") {
+    window.history.pushState({}, "", `/#${id}`);
+    window.dispatchEvent(new PopStateEvent("popstate"));
     setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 60);
   } else {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }
+}
+
+function applyHeadMetadata(metadata) {
+  if (typeof document === "undefined") return () => {};
+
+  const previous = {
+    title: document.title,
+    description: document.querySelector('meta[name="description"]')?.getAttribute("content") || "",
+    canonical: document.querySelector('link[rel="canonical"]')?.getAttribute("href") || "",
+    ogTitle: document.querySelector('meta[property="og:title"]')?.getAttribute("content") || "",
+    ogDescription: document.querySelector('meta[property="og:description"]')?.getAttribute("content") || "",
+    ogUrl: document.querySelector('meta[property="og:url"]')?.getAttribute("content") || "",
+    ogType: document.querySelector('meta[property="og:type"]')?.getAttribute("content") || "",
+    ogImage: document.querySelector('meta[property="og:image"]')?.getAttribute("content") || "",
+    twitterTitle: document.querySelector('meta[name="twitter:title"]')?.getAttribute("content") || "",
+    twitterDescription: document.querySelector('meta[name="twitter:description"]')?.getAttribute("content") || "",
+    twitterImage: document.querySelector('meta[name="twitter:image"]')?.getAttribute("content") || "",
+  };
+
+  const setMeta = (selector, attr, name, value) => {
+    let tag = document.head.querySelector(selector);
+    if (!tag) {
+      tag = document.createElement("meta");
+      tag.setAttribute(attr, name);
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute("content", value);
+  };
+
+  const setCanonical = value => {
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", value);
+  };
+
+  document.title = metadata.title;
+  setMeta('meta[name="description"]', "name", "description", metadata.description);
+  setCanonical(metadata.canonical);
+  setMeta('meta[property="og:title"]', "property", "og:title", metadata.ogTitle);
+  setMeta('meta[property="og:description"]', "property", "og:description", metadata.ogDescription);
+  setMeta('meta[property="og:url"]', "property", "og:url", metadata.ogUrl);
+  setMeta('meta[property="og:type"]', "property", "og:type", metadata.ogType);
+  setMeta('meta[property="og:image"]', "property", "og:image", metadata.ogImage);
+  setMeta('meta[name="twitter:title"]', "name", "twitter:title", metadata.twitterTitle);
+  setMeta('meta[name="twitter:description"]', "name", "twitter:description", metadata.twitterDescription);
+  setMeta('meta[name="twitter:image"]', "name", "twitter:image", metadata.twitterImage);
+
+  return () => {
+    document.title = previous.title;
+    setMeta('meta[name="description"]', "name", "description", previous.description);
+    setCanonical(previous.canonical);
+    setMeta('meta[property="og:title"]', "property", "og:title", previous.ogTitle);
+    setMeta('meta[property="og:description"]', "property", "og:description", previous.ogDescription);
+    setMeta('meta[property="og:url"]', "property", "og:url", previous.ogUrl);
+    setMeta('meta[property="og:type"]', "property", "og:type", previous.ogType);
+    setMeta('meta[property="og:image"]', "property", "og:image", previous.ogImage);
+    setMeta('meta[name="twitter:title"]', "name", "twitter:title", previous.twitterTitle);
+    setMeta('meta[name="twitter:description"]', "name", "twitter:description", previous.twitterDescription);
+    setMeta('meta[name="twitter:image"]', "name", "twitter:image", previous.twitterImage);
+  };
 }
 
 function Brand({ white }) {
@@ -631,7 +729,7 @@ function About({ onBook }) {
       <motion.div {...A.slideLeft(0.1)} className="relative"><div className="mx-auto max-w-[320px] overflow-hidden rounded-[24px] border border-[#eadfd5] bg-[#f3e5da] shadow-[0_16px_40px_rgba(69,35,27,.10)] sm:max-w-[400px] sm:rounded-[30px] sm:shadow-[0_22px_60px_rgba(69,35,27,.12)]"><img src={`${IMG}/services/artist.jpeg`} alt="RS Bridal makeup artist portrait" width="745" height="1825" loading="lazy" decoding="async" className="h-[380px] w-full object-cover object-top sm:h-[520px]" /></div></motion.div>
       <motion.div {...A.slideRight(0.15)}><div><p className="section-kicker">ABOUT RS BRIDAL</p><h2 className="section-title text-[28px] leading-[1.1] sm:text-[clamp(2.45rem,4.2vw,3rem)]">Beauty That Feels Like You</h2><p className="mt-3 text-[13px] font-semibold tracking-[.04em] text-[#8a363b] sm:mt-4 sm:text-[14px]">Personalised bridal artistry for your most meaningful celebrations.</p><p className="mt-4 text-[14px] leading-6 text-[#655a54] sm:mt-6 sm:text-[15px] sm:leading-7">RS Bridal is built around one simple idea — every bride should feel like the most confident and beautiful version of herself on her wedding day. Each look is thoughtfully planned around the bride's features, outfit, jewellery, occasion, and personal preference rather than following one fixed makeup style.</p><p className="mt-3 text-[14px] leading-6 text-[#655a54] sm:mt-4 sm:text-[15px] sm:leading-7">Originally from Trichy and primarily serving bridal clients in Chennai, RS Bridal accepts wedding and beauty bookings across Tamil Nadu. Whether the celebration is intimate or grand, the focus remains on creating an elegant, comfortable, and timeless look that feels truly personal to the bride.</p>
         <div className="mt-5 grid gap-2.5 sm:mt-7 sm:grid-cols-2 sm:gap-3">{[["Personalised Looks", "Created around your features and personal style"], ["Bridal-Focused Beauty", "Thoughtful styling for your wedding celebrations"], ["Chennai Bookings", "Primary service area for bridal appointments"], ["Across Tamil Nadu", "Wedding bookings accepted throughout Tamil Nadu"]].map(([title, desc], i) => <motion.div key={title} {...A.fadeUp(0.3 + i * 0.08)} className="flex gap-2.5 rounded-[18px] border border-[#eadfd5] bg-[#fbf6f1] p-3.5 sm:gap-3 sm:rounded-[22px] sm:p-4"><span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#7a111a] text-white sm:h-6 sm:w-6"><Icon name="check" size={12} /></span><div><strong className="block text-[12px] text-[#29211e] sm:text-[13px]">{title}</strong><span className="mt-0.5 block text-[11px] leading-4 text-[#746963] sm:mt-1 sm:text-[12px] sm:leading-5">{desc}</span></div></motion.div>)}</div>
-        <motion.div {...A.fadeUp(0.6)} className="mt-6 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3"><button onClick={onBook} className="btn-primary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Book an Appointment</button><button onClick={() => scrollToSection("gallery")} className="btn-secondary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">See Makeup Work</button></motion.div></div></motion.div>
+        <motion.div {...A.fadeUp(0.6)} className="mt-6 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3"><button onClick={onBook} className="btn-primary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Book an Appointment</button><button onClick={() => scrollToSection("gallery")} className="btn-secondary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">See Makeup Work</button><button onClick={() => navigateTo("about-suji")} className="btn-secondary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Meet Suji</button></motion.div></div></motion.div>
     </div>
     <motion.div {...A.fadeUp(0.15)} className="mx-auto mt-10 max-w-[1420px] px-5 sm:mt-12 sm:px-6 lg:px-8">
       <div className="border-t border-[#eadfd5] pt-8 sm:pt-10">
@@ -728,7 +826,7 @@ class Gallery extends React.Component {
 
 function WhyUs() {
   const items = [["sparkles", "Look Planning", "Makeup can be coordinated with outfit, jewellery, photography and event timing."], ["heart", "Personal Attention", "The website is designed around direct bridal enquiries instead of a generic salon flow."], ["map", "Tamil Nadu Coverage", "Chennai-focused bookings with venue enquiries across Tamil Nadu, subject to date availability."], ["check", "Clear Confirmation", "Service scope, date, venue and final quote can be confirmed before booking."]];
-  return <section id="why-us" className="section-anchor bg-[#6d1119] py-14 text-white sm:py-20"><div className="mx-auto max-w-[1420px] px-5 sm:px-6 lg:px-8 xl:px-10"><motion.div {...A.fadeUp(0)} className="mx-auto max-w-[720px] text-center"><p className="text-[11px] font-bold tracking-[.22em] text-[#e5b8a7] sm:text-[12px]">WHY RS BRIDAL</p><h2 className="brand-serif mt-3 text-[28px] leading-[1.1] sm:text-[42px] lg:text-[50px]">A calm, personal beauty experience for your special day</h2></motion.div><div className="mt-8 grid gap-3.5 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">{items.map(([icon, title, desc], i) => <motion.div key={title} {...A.fadeUp(0.15 + i * 0.1)} className="rounded-[22px] border border-white/15 bg-white/[.06] p-5 sm:rounded-[26px] sm:p-6"><span className="grid h-10 w-10 place-items-center rounded-full border border-[#d79c8d] text-[#f3c8b8] sm:h-12 sm:w-12"><Icon name={icon} size={20} /></span><h3 className="brand-serif mt-4 text-[19px] sm:mt-5 sm:text-[24px]">{title}</h3><p className="mt-2 text-[12px] leading-5 text-[#e5cbc2] sm:mt-3 sm:leading-6">{desc}</p></motion.div>)}</div></div></section>;
+  return <section id="why-us" className="section-anchor bg-[#6d1119] py-14 text-white sm:py-20"><div className="mx-auto max-w-[1420px] px-5 sm:px-6 lg:px-8 xl:px-10"><motion.div {...A.fadeUp(0)} className="mx-auto max-w-[720px] text-center"><p className="text-[11px] font-bold tracking-[.22em] text-[#e5b8a7] sm:text-[12px]">WHY RS BRIDAL</p><h2 className="brand-serif mt-3 text-[28px] leading-[1.1] sm:text-[42px] lg:text-[50px]">A calm, personal beauty experience for your special day</h2></motion.div><div className="mt-8 grid gap-3.5 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">{items.map(([icon, title, desc], i) => <motion.div key={title} {...A.fadeUp(0.15 + i * 0.1)} className="rounded-[22px] border border-white/15 bg-white/[.06] p-5 sm:rounded-[26px] sm:p-6"><span className="grid h-10 w-10 place-items-center rounded-full border border-[#d79c8d] text-[#f3c8b8] sm:h-12 sm:w-12"><Icon name={icon} size={20} /></span><h3 className="brand-serif mt-4 text-[19px] sm:mt-5 sm:text-[24px]">{title}</h3><p className="mt-2 text-[12px] leading-5 text-[#e5cbc2] sm:mt-3 sm:leading-6">{desc}</p></motion.div>)}</div><motion.div {...A.fadeUp(0.55)} className="mt-7 text-center sm:mt-9"><a href="/bridal-makeup-artist-chennai" className="text-[12px] font-semibold text-[#e5b8a7] underline decoration-[#e5b8a7]/70 underline-offset-4 transition hover:text-white">Explore Bridal Makeup Services in Chennai</a></motion.div></div></section>;
 }
 
 function ServiceAreas({ onBook }) {
@@ -796,10 +894,27 @@ function HomePage({ onBook }) {
 }
 
 class App extends React.Component {
-  constructor(props) { super(props); this.state = { route: props.initialRoute || routeFromHash(), presetService: "" }; }
-  componentDidMount() { this.hashHandler = () => this.setState({ route: routeFromHash() }); window.addEventListener("hashchange", this.hashHandler); this.hashHandler(); }
-  componentWillUnmount() { window.removeEventListener("hashchange", this.hashHandler); }
-  onBook = (service = "") => { this.setState({ presetService: service }); window.location.hash = "book"; window.scrollTo(0, 0); };
+  constructor(props) { super(props); this.state = { route: props.initialRoute || routeFromLocation(), presetService: "" }; }
+  componentDidMount() {
+    this.routeHandler = () => this.setState({ route: routeFromLocation() });
+    window.addEventListener("hashchange", this.routeHandler);
+    window.addEventListener("popstate", this.routeHandler);
+    this.routeHandler();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("hashchange", this.routeHandler);
+    window.removeEventListener("popstate", this.routeHandler);
+  }
+  onBook = (service = "") => {
+    this.setState({ presetService: service });
+    if (window.location.pathname !== "/") {
+      window.history.pushState({}, "", "/#book");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    } else {
+      window.location.hash = "book";
+    }
+    window.scrollTo(0, 0);
+  };
   render() {
     const { route, presetService } = this.state;
     const anim = { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 }, transition: { duration: 0.3, ease: "easeInOut" } };
@@ -807,6 +922,8 @@ class App extends React.Component {
       <AnimatePresence mode="wait">
         <motion.div key={route} {...anim}>
           {route === "book" && <BookingPage presetService={presetService} />}
+          {route === "bridal-makeup-artist-chennai" && <BridalMakeupChennai onBook={this.onBook} ui={{ A, Brand, Footer, FloatingSocialDock, Icon, CONFIG, heroImage, applyHeadMetadata }} />}
+          {route === "about-suji" && <AboutSuji onBook={this.onBook} ui={{ A, Brand, Footer, FloatingSocialDock, Icon, applyHeadMetadata }} />}
           {route === "home" && <HomePage onBook={this.onBook} />}
         </motion.div>
       </AnimatePresence>
