@@ -45,31 +45,15 @@ class AboutSuji extends React.Component {
       sameAs: ["https://instagram.com/suji_makeover_in_chennai_1"],
     };
 
-    const videoSchema = {
-      "@context": "https://schema.org",
-      "@type": "VideoObject",
-      name: "Suji Best Makeup Artist Recognition and Bridal Travel",
-      description: "A video featuring Suji receiving Best Makeup Artist recognition and highlights from bridal travel.",
-      contentUrl: "https://www.rsbridal.in/assets/catalogs/best_makup_artist.mp4",
-      thumbnailUrl: "https://www.rsbridal.in/assets/images/artist1.png",
-      url: canonical,
-    };
-
     this.personSchemaTag = document.createElement("script");
     this.personSchemaTag.type = "application/ld+json";
     this.personSchemaTag.text = JSON.stringify(personSchema);
     document.head.appendChild(this.personSchemaTag);
-
-    this.videoSchemaTag = document.createElement("script");
-    this.videoSchemaTag.type = "application/ld+json";
-    this.videoSchemaTag.text = JSON.stringify(videoSchema);
-    document.head.appendChild(this.videoSchemaTag);
   }
 
   componentWillUnmount() {
     if (this.restoreHead) this.restoreHead();
     if (this.personSchemaTag?.parentNode) this.personSchemaTag.parentNode.removeChild(this.personSchemaTag);
-    if (this.videoSchemaTag?.parentNode) this.videoSchemaTag.parentNode.removeChild(this.videoSchemaTag);
   }
 
   render() {
