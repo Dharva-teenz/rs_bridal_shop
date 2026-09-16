@@ -1,88 +1,237 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const SITE_URL = "https://www.rsbridal.in";
+const PAGE_URL = `${SITE_URL}/bridal-makeup-artist-chennai`;
+const SOCIAL_IMAGE_URL = `${SITE_URL}/assets/images/artist1.png`;
+
+const PAGE_SEO = {
+  title: "Bridal Makeup Artist in Chennai | RS Bridal",
+  description:
+    "RS Bridal offers personalised bridal makeup in Chennai, including HD and Ultra HD makeup, hairstyling, saree draping and venue services across Tamil Nadu.",
+  canonical: PAGE_URL,
+  ogTitle: "Bridal Makeup Artist in Chennai | RS Bridal",
+  ogDescription:
+    "Personalised bridal, engagement and reception makeup with hairstyling, saree draping and venue-based services in Chennai and across Tamil Nadu.",
+  ogUrl: PAGE_URL,
+  ogType: "website",
+  ogImage: SOCIAL_IMAGE_URL,
+  twitterTitle: "Bridal Makeup Artist in Chennai | RS Bridal",
+  twitterDescription:
+    "Bridal, engagement and reception makeup with hairstyling and saree draping in Chennai, with venue bookings across Tamil Nadu.",
+  twitterImage: SOCIAL_IMAGE_URL,
+};
+
+const FAQ_ITEMS = [
+  {
+    q: "Does RS Bridal provide bridal makeup at wedding venues in Chennai?",
+    a: "Yes. RS Bridal provides venue-based bridal makeup in Chennai for wedding-day events based on booking date and schedule.",
+  },
+  {
+    q: "Does RS Bridal travel across Chennai for bridal bookings?",
+    a: "Yes. On-site bridal bookings are accepted across Chennai, and event timing can be planned around your venue schedule.",
+  },
+  {
+    q: "What bridal makeup services are available?",
+    a: "Bridal services include HD Makeup, Ultra HD Makeup, Signature Look, Glossy Skin Finish Makeup, hairstyling, saree draping, bridesmaid makeup and mehendi options.",
+  },
+  {
+    q: "Does RS Bridal provide engagement and reception makeup?",
+    a: "Yes. RS Bridal takes bookings for engagement and reception looks, with style planning based on outfit, jewellery and function timing.",
+  },
+  {
+    q: "Does RS Bridal travel outside Chennai?",
+    a: "Yes. Chennai is the primary work area, and venue-based bookings can also be discussed for Trichy and other cities across Tamil Nadu.",
+  },
+];
+
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${PAGE_URL}#service`,
+  name: "Bridal Makeup Services in Chennai",
+  alternateName: "RS Bridal Makeup Artist in Chennai",
+  description: PAGE_SEO.description,
+  url: PAGE_URL,
+  image: SOCIAL_IMAGE_URL,
+  serviceType: [
+    "Bridal Makeup",
+    "HD Bridal Makeup",
+    "Ultra HD Bridal Makeup",
+    "Engagement Makeup",
+    "Reception Makeup",
+    "Bridesmaid Makeup",
+    "Hairstyling",
+    "Saree Draping",
+    "Mehendi",
+  ],
+  provider: {
+    "@id": `${SITE_URL}/#business`,
+  },
+  areaServed: [
+    { "@type": "City", name: "Chennai" },
+    { "@type": "State", name: "Tamil Nadu" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Chennai Bridal Makeup Services",
+    itemListElement: [
+      "Bridal Makeup",
+      "Engagement and Reception Makeup",
+      "Bridesmaid Makeup",
+      "Hairstyling and Saree Draping",
+      "Mehendi",
+    ].map(name => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name,
+        provider: { "@id": `${SITE_URL}/#business` },
+      },
+    })),
+  },
+};
+
+const WEB_PAGE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${PAGE_URL}#webpage`,
+  url: PAGE_URL,
+  name: PAGE_SEO.title,
+  description: PAGE_SEO.description,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${PAGE_URL}#service` },
+  mainEntity: { "@id": `${PAGE_URL}#service` },
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    url: SOCIAL_IMAGE_URL,
+  },
+  inLanguage: "en-IN",
+};
+
+const BREADCRUMB_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": `${PAGE_URL}#breadcrumb`,
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: `${SITE_URL}/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Bridal Makeup Artist in Chennai",
+      item: PAGE_URL,
+    },
+  ],
+};
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": `${PAGE_URL}#faq`,
+  mainEntity: FAQ_ITEMS.map(item => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
+function setPageMeta(selector, attributeName, attributeValue, content) {
+  let tag = document.head.querySelector(selector);
+  const created = !tag;
+  const previousContent = tag?.getAttribute("content") ?? null;
+
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute(attributeName, attributeValue);
+    document.head.appendChild(tag);
+  }
+
+  tag.setAttribute("content", content);
+
+  return () => {
+    if (created) {
+      tag.remove();
+    } else if (previousContent === null) {
+      tag.removeAttribute("content");
+    } else {
+      tag.setAttribute("content", previousContent);
+    }
+  };
+}
+
+function addStructuredData(id, data) {
+  document.getElementById(id)?.remove();
+
+  const script = document.createElement("script");
+  script.id = id;
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(data);
+  document.head.appendChild(script);
+
+  return () => script.remove();
+}
+
 class BridalMakeupChennai extends React.Component {
   componentDidMount() {
     const { ui } = this.props;
-    const title = "Best Bridal Makeup Artist in Chennai | RS Bridal";
-    const description = "Looking for a bridal makeup artist in Chennai? RS Bridal offers bridal, engagement, reception, hairstyling and saree draping services with on-site travel across Chennai and Tamil Nadu.";
-    const canonical = "https://www.rsbridal.in/bridal-makeup-artist-chennai";
-    const image = "https://www.rsbridal.in/assets/images/artist1.png";
+    this.restoreHead = ui.applyHeadMetadata(PAGE_SEO);
 
-    this.restoreHead = ui.applyHeadMetadata({
-      title,
-      description,
-      canonical,
-      ogTitle: title,
-      ogDescription: description,
-      ogUrl: canonical,
-      ogType: "website",
-      ogImage: image,
-      twitterTitle: title,
-      twitterDescription: description,
-      twitterImage: image,
-    });
+    this.restoreAdditionalMeta = [
+      setPageMeta('meta[name="author"]', "name", "author", "RS Bridal"),
+      setPageMeta(
+        'meta[name="robots"]',
+        "name",
+        "robots",
+        "index, follow, max-image-preview:large"
+      ),
+      setPageMeta(
+        'meta[name="googlebot"]',
+        "name",
+        "googlebot",
+        "index, follow, max-image-preview:large"
+      ),
+      setPageMeta('meta[property="og:site_name"]', "property", "og:site_name", "RS Bridal"),
+      setPageMeta('meta[property="og:locale"]', "property", "og:locale", "en_IN"),
+      setPageMeta(
+        'meta[property="og:image:alt"]',
+        "property",
+        "og:image:alt",
+        "Bridal makeup by RS Bridal in Chennai"
+      ),
+      setPageMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image"),
+      setPageMeta(
+        'meta[name="twitter:image:alt"]',
+        "name",
+        "twitter:image:alt",
+        "RS Bridal makeup artist in Chennai"
+      ),
+    ];
 
-    const schema = {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Service",
-          "@id": "https://www.rsbridal.in/bridal-makeup-artist-chennai#service",
-          name: "RS Bridal Makeup Services",
-          serviceType: "Best Bridal Makeup Artist in Chennai",
-          url: canonical,
-          areaServed: [
-            { "@type": "City", name: "Chennai" },
-            { "@type": "City", name: "Tiruchirappalli", alternateName: "Trichy" },
-            { "@type": "AdministrativeArea", name: "Tamil Nadu" },
-          ],
-          provider: {
-            "@type": ["LocalBusiness", "BeautySalon", "ProfessionalService"],
-            name: "RS Bridal",
-            sameAs: [ui.CONFIG.instagramUrl],
-          },
-        },
-      ],
-    };
-
-    this.schemaTag = document.createElement("script");
-    this.schemaTag.type = "application/ld+json";
-    this.schemaTag.text = JSON.stringify(schema);
-    document.head.appendChild(this.schemaTag);
+    this.removeStructuredData = [
+      addStructuredData("rs-bridal-chennai-service-schema", SERVICE_SCHEMA),
+      addStructuredData("rs-bridal-chennai-webpage-schema", WEB_PAGE_SCHEMA),
+      addStructuredData("rs-bridal-chennai-breadcrumb-schema", BREADCRUMB_SCHEMA),
+      addStructuredData("rs-bridal-chennai-faq-schema", FAQ_SCHEMA),
+    ];
   }
 
   componentWillUnmount() {
     if (this.restoreHead) this.restoreHead();
-    if (this.schemaTag?.parentNode) this.schemaTag.parentNode.removeChild(this.schemaTag);
+    this.restoreAdditionalMeta?.reverse().forEach(restore => restore());
+    this.removeStructuredData?.forEach(remove => remove());
   }
 
   render() {
     const { onBook, ui } = this.props;
     const { A, Brand, Footer, FloatingSocialDock, Icon, CONFIG, heroImage } = ui;
-
-    const faqItems = [
-      {
-        q: "Does RS Bridal provide bridal makeup at wedding venues in Chennai?",
-        a: "Yes. RS Bridal provides venue-based bridal makeup in Chennai for wedding-day events based on booking date and schedule.",
-      },
-      {
-        q: "Does RS Bridal travel across Chennai for bridal bookings?",
-        a: "Yes. On-site bridal bookings are accepted across Chennai, and event timing can be planned around your venue schedule.",
-      },
-      {
-        q: "What bridal makeup services are available?",
-        a: "Bridal services include HD Makeup, Ultra HD Makeup, Signature Look, Glossy Skin Finish Makeup, hairstyling, saree draping, bridesmaid makeup and mehendi options.",
-      },
-      {
-        q: "Does RS Bridal provide engagement and reception makeup?",
-        a: "Yes. RS Bridal takes bookings for engagement and reception looks, with style planning based on outfit, jewellery and function timing.",
-      },
-      {
-        q: "Does RS Bridal travel outside Chennai?",
-        a: "Yes. Chennai is the primary work area, and venue-based bookings can also be discussed for Trichy and other cities across Tamil Nadu.",
-      },
-    ];
 
     const serviceHighlights = [
       ["Bridal Makeup", "HD, Ultra HD, Signature and Glossy Skin Finish bridal looks planned for your wedding-day style."],
@@ -197,7 +346,7 @@ class BridalMakeupChennai extends React.Component {
               <motion.div {...A.fadeUp(0.05)}>
                 <h2 className="section-title">Frequently Asked Questions</h2>
                 <div className="mt-7 grid gap-3">
-                  {faqItems.map((item, i) => (
+                  {FAQ_ITEMS.map((item, i) => (
                     <motion.article key={item.q} {...A.fadeUp(0.1 + i * 0.06)} className="rounded-[22px] border border-[#e5d7cb] bg-white p-5 sm:p-6">
                       <h3 className="text-[14px] font-semibold text-[#2f2623]">{item.q}</h3>
                       <p className="mt-2 text-[13px] leading-6 text-[#675b54]">{item.a}</p>

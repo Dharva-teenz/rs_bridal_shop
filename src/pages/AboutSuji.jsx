@@ -1,59 +1,181 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const SITE_URL = "https://www.rsbridal.in";
+const PAGE_URL = `${SITE_URL}/about-suji`;
+const PROFILE_IMAGE_URL = `${SITE_URL}/assets/catalogs/artist1.png`;
+const INSTAGRAM_URL = "https://instagram.com/suji_makeover_in_chennai_1";
+
+const ABOUT_SUJI_SEO = {
+  title: "About Suji | Bridal Makeup Artist in Chennai | RS Bridal",
+  description: "Meet Suji, the bridal makeup artist behind RS Bridal in Chennai. Explore her bridal makeup expertise, professional training and venue services across Tamil Nadu.",
+  canonical: PAGE_URL,
+  ogTitle: "About Suji | Bridal Makeup Artist in Chennai",
+  ogDescription: "Meet Suji, the bridal makeup artist behind RS Bridal, creating personalised wedding, engagement and reception looks in Chennai and across Tamil Nadu.",
+  ogUrl: PAGE_URL,
+  ogType: "profile",
+  ogImage: PROFILE_IMAGE_URL,
+  twitterTitle: "About Suji | RS Bridal Makeup Artist in Chennai",
+  twitterDescription: "Discover Suji's bridal makeup expertise, professional beauty training and venue-based services across Chennai and Tamil Nadu.",
+  twitterImage: PROFILE_IMAGE_URL,
+};
+
+const PERSON_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${PAGE_URL}#suji`,
+  name: "Suji",
+  jobTitle: "Bridal Makeup Artist",
+  description: "Suji is the bridal makeup artist behind RS Bridal, primarily serving Chennai and accepting venue-based bridal bookings across Tamil Nadu.",
+  url: PAGE_URL,
+  image: PROFILE_IMAGE_URL,
+  worksFor: {
+    "@id": `${SITE_URL}/#business`,
+  },
+  knowsAbout: [
+    "Bridal Makeup",
+    "HD Makeup",
+    "Ultra HD Makeup",
+    "Engagement Makeup",
+    "Reception Makeup",
+    "Bridesmaid Makeup",
+    "Groom Makeup and Grooming",
+    "Hairstyling",
+    "Bridal Hairdo",
+    "Hair Extensions",
+    "Saree Pre-Pleating",
+    "Saree Draping",
+    "Mehendi",
+    "Bridal Flower Styling",
+  ],
+  award: "Scissors Award 2026",
+  sameAs: [INSTAGRAM_URL],
+};
+
+const PROFILE_PAGE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${PAGE_URL}#webpage`,
+  url: PAGE_URL,
+  name: ABOUT_SUJI_SEO.title,
+  description: ABOUT_SUJI_SEO.description,
+  isPartOf: {
+    "@id": `${SITE_URL}/#website`,
+  },
+  mainEntity: {
+    "@id": `${PAGE_URL}#suji`,
+  },
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    url: PROFILE_IMAGE_URL,
+  },
+  inLanguage: "en-IN",
+};
+
+const BREADCRUMB_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": `${PAGE_URL}#breadcrumb`,
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: `${SITE_URL}/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "About Suji",
+      item: PAGE_URL,
+    },
+  ],
+};
+
+function setPageMeta(selector, attributeName, attributeValue, content) {
+  let tag = document.head.querySelector(selector);
+  const created = !tag;
+  const previousContent = tag?.getAttribute("content") ?? null;
+
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute(attributeName, attributeValue);
+    document.head.appendChild(tag);
+  }
+
+  tag.setAttribute("content", content);
+
+  return () => {
+    if (created) {
+      tag.remove();
+    } else if (previousContent === null) {
+      tag.removeAttribute("content");
+    } else {
+      tag.setAttribute("content", previousContent);
+    }
+  };
+}
+
+function addStructuredData(id, data) {
+  const existing = document.getElementById(id);
+  if (existing) existing.remove();
+
+  const script = document.createElement("script");
+  script.id = id;
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(data);
+  document.head.appendChild(script);
+
+  return () => script.remove();
+}
+
 class AboutSuji extends React.Component {
   componentDidMount() {
     const { ui } = this.props;
-    const title = "About Suji | Bridal Makeup Artist at RS Bridal";
-    const description = "Meet Suji, the bridal makeup artist behind RS Bridal, offering professional bridal, engagement, reception, hairstyling and bridal beauty services across Chennai, Trichy and Tamil Nadu.";
-    const canonical = "https://www.rsbridal.in/about-suji";
-    const image = "https://www.rsbridal.in/assets/catalogs/artist1.png";
+    this.restoreHead = ui.applyHeadMetadata(ABOUT_SUJI_SEO);
 
-    this.restoreHead = ui.applyHeadMetadata({
-      title,
-      description,
-      canonical,
-      ogTitle: title,
-      ogDescription: "Meet Suji, the bridal makeup artist behind RS Bridal, serving brides across Chennai, Trichy and Tamil Nadu.",
-      ogUrl: canonical,
-      ogType: "profile",
-      ogImage: image,
-      twitterTitle: title,
-      twitterDescription: description,
-      twitterImage: image,
-    });
+    this.restoreAdditionalMeta = [
+      setPageMeta('meta[name="author"]', "name", "author", "RS Bridal"),
+      setPageMeta(
+        'meta[name="robots"]',
+        "name",
+        "robots",
+        "index, follow, max-image-preview:large"
+      ),
+      setPageMeta(
+        'meta[name="googlebot"]',
+        "name",
+        "googlebot",
+        "index, follow, max-image-preview:large"
+      ),
+      setPageMeta('meta[property="og:site_name"]', "property", "og:site_name", "RS Bridal"),
+      setPageMeta('meta[property="og:locale"]', "property", "og:locale", "en_IN"),
+      setPageMeta(
+        'meta[property="og:image:alt"]',
+        "property",
+        "og:image:alt",
+        "Suji, bridal makeup artist behind RS Bridal in Chennai"
+      ),
+      setPageMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image"),
+      setPageMeta(
+        'meta[name="twitter:image:alt"]',
+        "name",
+        "twitter:image:alt",
+        "Suji, RS Bridal makeup artist in Chennai"
+      ),
+    ];
 
-    const personSchema = {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Suji",
-      jobTitle: "Bridal Makeup Artist",
-      url: canonical,
-      worksFor: {
-        "@type": "Organization",
-        name: "RS Bridal",
-      },
-      knowsAbout: [
-        "Bridal Makeup",
-        "Engagement Makeup",
-        "Reception Makeup",
-        "Hairstyling",
-        "Saree Draping",
-        "Bridal Hairdo",
-        "Mehendi",
-      ],
-      sameAs: ["https://instagram.com/suji_makeover_in_chennai_1"],
-    };
-
-    this.personSchemaTag = document.createElement("script");
-    this.personSchemaTag.type = "application/ld+json";
-    this.personSchemaTag.text = JSON.stringify(personSchema);
-    document.head.appendChild(this.personSchemaTag);
+    this.removeStructuredData = [
+      addStructuredData("rs-bridal-about-person-schema", PERSON_SCHEMA),
+      addStructuredData("rs-bridal-about-profile-schema", PROFILE_PAGE_SCHEMA),
+      addStructuredData("rs-bridal-about-breadcrumb-schema", BREADCRUMB_SCHEMA),
+    ];
   }
 
   componentWillUnmount() {
     if (this.restoreHead) this.restoreHead();
-    if (this.personSchemaTag?.parentNode) this.personSchemaTag.parentNode.removeChild(this.personSchemaTag);
+    this.restoreAdditionalMeta?.reverse().forEach(restore => restore());
+    this.removeStructuredData?.forEach(remove => remove());
   }
 
   render() {
@@ -94,9 +216,9 @@ class AboutSuji extends React.Component {
               </motion.div>
               <motion.div {...A.slideRight(0.12)}>
                 <p className="section-kicker">ABOUT SUJI</p>
-                <h1 className="section-title text-[34px] sm:text-[46px]">Suji – Bridal Makeup Artist Behind RS Bridal</h1>
+                <h1 className="section-title text-[34px] sm:text-[46px]">Suji – Bridal Makeup Artist in Chennai</h1>
                 <h2 className="brand-serif mt-4 text-[28px] leading-tight text-[#241a17] sm:text-[34px]">About Suji</h2>
-                <p className="mt-4 max-w-[700px] text-[14px] leading-7 text-[#655a54] sm:text-[15px]">Suji is the makeup artist behind RS Bridal, working with brides for wedding, engagement and reception functions. She serves clients in Chennai, Trichy and across Tamil Nadu, and supports on-site bridal services where applicable.</p>
+                <p className="mt-4 max-w-[700px] text-[14px] leading-7 text-[#655a54] sm:text-[15px]">Suji is the makeup artist behind RS Bridal, working with brides for wedding, engagement and reception functions. Originally from Trichy and primarily serving bridal clients in Chennai, she accepts venue-based bookings across Tamil Nadu based on date availability.</p>
                 <p className="mt-3 max-w-[700px] text-[14px] leading-7 text-[#655a54] sm:text-[15px]">Her process is personal and practical. She understands each bride&apos;s preferred finish, then coordinates makeup with outfit, jewellery, function type and event style while keeping the preparation process friendly and comfortable.</p>
                 <div className="mt-7 flex flex-wrap gap-3">
                   <button onClick={() => onBook()} className="btn-primary"><Icon name="whatsapp" size={16} /> Enquire on WhatsApp</button>
@@ -196,8 +318,8 @@ class AboutSuji extends React.Component {
           <section className="bg-[#fbf7f2] py-16 sm:py-20">
             <div className="mx-auto max-w-[1420px] px-5 sm:px-6 lg:px-8 xl:px-10">
               <motion.div {...A.fadeUp(0.05)} className="rounded-[30px] border border-[#eadfd5] bg-[#fffaf6] p-6 sm:p-9">
-                <h2 className="section-title">Serving Brides Across Chennai, Trichy &amp; Tamil Nadu</h2>
-                <p className="mt-4 text-[14px] leading-7 text-[#665a54] sm:text-[15px]">RS Bridal&apos;s primary work area includes Chennai and Trichy, with open travel service and on-site bridal support available across Tamil Nadu based on booking schedule and venue timing.</p>
+                <h2 className="section-title">Serving Brides Across Chennai &amp; Tamil Nadu</h2>
+                <p className="mt-4 text-[14px] leading-7 text-[#665a54] sm:text-[15px]">Chennai is RS Bridal&apos;s primary work area. Brides can also enquire for venue-based makeup and styling in Trichy and other cities and districts across Tamil Nadu, based on booking schedule and venue timing.</p>
               </motion.div>
             </div>
           </section>
@@ -211,7 +333,7 @@ class AboutSuji extends React.Component {
                     ["Bridal-Focused Services", "Makeup and styling support built around bridal functions and event timing."],
                     ["Personalised Approach", "Looks are planned around face features, outfit styling and preferred finish."],
                     ["Professional Beauty Skills", "Bridal, beauty and hair-related training applied to practical event requirements."],
-                    ["Travel Availability", "Chennai and Trichy bookings with venue-based bridal services across Tamil Nadu."],
+                    ["Travel Availability", "Chennai-focused bookings with venue-based bridal services across Tamil Nadu."],
                   ].map(([title, desc], index) => (
                     <motion.article key={title} {...A.fadeUp(0.08 + index * 0.06)} className="rounded-[22px] border border-[#eadfd5] bg-[#fbf6f1] p-4">
                       <h3 className="text-[13px] font-bold text-[#2f2420]">{title}</h3>

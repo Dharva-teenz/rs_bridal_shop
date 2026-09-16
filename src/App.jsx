@@ -501,6 +501,131 @@ const faqItems = [
   },
 ];
 
+const SITE_URL = "https://www.rsbridal.in";
+const HOME_URL = `${SITE_URL}/`;
+const BRAND_LOGO_URL = `${SITE_URL}/assets/images/rs-bridal-brand-logo.webp`;
+const SOCIAL_IMAGE_URL = `${SITE_URL}/assets/images/artist1.png`;
+
+const HOME_SEO_METADATA = {
+  title: "RS Bridal |Best Bridal Makeup Artist in Chennai & Tamil Nadu",
+  description: "RS Bridal is a bridal makeup artist in Chennai offering HD and Ultra HD makeup, hairstyling, saree pre-pleating, mehendi and venue bookings across Tamil Nadu.",
+  canonical: HOME_URL,
+  ogTitle: "RS Bridal |Best Bridal Makeup Artist in Chennai & Tamil Nadu",
+  ogDescription: "Personalised bridal makeup, HD and Ultra HD makeup, hairstyling, saree pre-pleating, mehendi and wedding beauty services in Chennai and across Tamil Nadu.",
+  ogUrl: HOME_URL,
+  ogType: "website",
+  ogImage: SOCIAL_IMAGE_URL,
+  twitterTitle: "RS Bridal |Best Bridal Makeup Artist in Chennai",
+  twitterDescription: "Bridal makeup, hairstyling, saree pre-pleating, mehendi and venue-based wedding beauty services in Chennai and across Tamil Nadu.",
+  twitterImage: SOCIAL_IMAGE_URL,
+};
+
+const SERVICE_AREA_SCHEMA = [
+  { "@type": "City", name: "Chennai" },
+  { "@type": "State", name: "Tamil Nadu" },
+];
+
+const SITE_STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["ProfessionalService", "Organization"],
+      "@id": `${SITE_URL}/#business`,
+      name: "RS Bridal",
+      alternateName: "RS Bridal Makeup Artist",
+      url: HOME_URL,
+      logo: {
+        "@type": "ImageObject",
+        "@id": `${SITE_URL}/#logo`,
+        url: BRAND_LOGO_URL,
+        contentUrl: BRAND_LOGO_URL,
+        caption: "RS Bridal",
+      },
+      image: {
+        "@type": "ImageObject",
+        "@id": `${SITE_URL}/#primaryimage`,
+        url: SOCIAL_IMAGE_URL,
+        contentUrl: SOCIAL_IMAGE_URL,
+        caption: "RS Bridal makeup artist",
+      },
+      description: "RS Bridal is a bridal makeup artist primarily serving Chennai and accepting venue-based wedding and beauty bookings across Tamil Nadu. Services include bridal makeup, HD and Ultra HD makeup, hairstyling, saree pre-pleating, mehendi, bridal floral styling, jewellery rental, beauty services and hair treatments.",
+      telephone: "+919150109056",
+      email: CONFIG.email,
+      areaServed: SERVICE_AREA_SCHEMA,
+      serviceArea: {
+        "@type": "State",
+        name: "Tamil Nadu",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+919150109056",
+        email: CONFIG.email,
+        contactType: "booking enquiries",
+        areaServed: "Tamil Nadu",
+      },
+      sameAs: [CONFIG.instagramUrl],
+      serviceType: serviceCategories.flatMap(category =>
+        category.services.map(service => service.name)
+      ),
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "RS Bridal Makeup, Beauty and Hair Services",
+        itemListElement: serviceCategories.map(category => ({
+          "@type": "OfferCatalog",
+          name: `${category.name} Services`,
+          itemListElement: category.services.map(service => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: service.name,
+              description: service.summary,
+              provider: { "@id": `${SITE_URL}/#business` },
+              areaServed: SERVICE_AREA_SCHEMA,
+            },
+          })),
+        })),
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: HOME_URL,
+      name: "RS Bridal",
+      alternateName: "RS Bridal Makeup Artist",
+      description: "Bridal makeup, beauty and hair services in Chennai with venue bookings across Tamil Nadu.",
+      publisher: { "@id": `${SITE_URL}/#business` },
+      inLanguage: "en-IN",
+    },
+  ],
+};
+
+const HOME_PAGE_STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/#webpage`,
+  url: HOME_URL,
+  name: HOME_SEO_METADATA.title,
+  description: HOME_SEO_METADATA.description,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${SITE_URL}/#business` },
+  primaryImageOfPage: { "@id": `${SITE_URL}/#primaryimage` },
+  inLanguage: "en-IN",
+};
+
+const HOME_FAQ_STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": `${SITE_URL}/#faq`,
+  mainEntity: faqItems.map(item => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
 
 function Icon({ name, size = 20 }) {
   const common = { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true };
@@ -641,6 +766,156 @@ function applyHeadMetadata(metadata) {
     setMeta('meta[name="twitter:description"]', "name", "twitter:description", previous.twitterDescription);
     setMeta('meta[name="twitter:image"]', "name", "twitter:image", previous.twitterImage);
   };
+}
+
+function setManagedMeta(selector, attributeName, attributeValue, content) {
+  let tag = document.head.querySelector(selector);
+  const created = !tag;
+  const previousContent = tag?.getAttribute("content") ?? null;
+
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute(attributeName, attributeValue);
+    document.head.appendChild(tag);
+  }
+
+  tag.setAttribute("content", content);
+
+  return () => {
+    if (created) {
+      tag.remove();
+    } else if (previousContent === null) {
+      tag.removeAttribute("content");
+    } else {
+      tag.setAttribute("content", previousContent);
+    }
+  };
+}
+
+function setManagedAlternateLink(hreflang, href) {
+  const selector = `link[rel="alternate"][hreflang="${hreflang}"]`;
+  let tag = document.head.querySelector(selector);
+  const created = !tag;
+  const previousHref = tag?.getAttribute("href") ?? null;
+
+  if (!tag) {
+    tag = document.createElement("link");
+    tag.setAttribute("rel", "alternate");
+    tag.setAttribute("hreflang", hreflang);
+    document.head.appendChild(tag);
+  }
+
+  tag.setAttribute("href", href);
+
+  return () => {
+    if (created) {
+      tag.remove();
+    } else if (previousHref === null) {
+      tag.removeAttribute("href");
+    } else {
+      tag.setAttribute("href", previousHref);
+    }
+  };
+}
+
+function setStructuredData({ id, data, matchText, persist = false }) {
+  let script = document.getElementById(id);
+
+  if (!script && matchText) {
+    script = Array.from(
+      document.head.querySelectorAll('script[type="application/ld+json"]')
+    ).find(item => item.textContent?.includes(matchText));
+  }
+
+  if (!script) {
+    script = document.createElement("script");
+    script.type = "application/ld+json";
+    document.head.appendChild(script);
+  }
+
+  script.id = id;
+  script.textContent = JSON.stringify(data);
+
+  return () => {
+    if (!persist) script.remove();
+  };
+}
+
+function HomeSeo() {
+  React.useEffect(() => {
+    if (typeof document === "undefined") return undefined;
+
+    const cleanupCoreMetadata = applyHeadMetadata(HOME_SEO_METADATA);
+    const cleanupAdditionalMetadata = [
+      setManagedMeta(
+        'meta[name="keywords"]',
+        "name",
+        "keywords",
+        "RS Bridal, bridal makeup artist in Chennai, best bridal makeup artist in Chennai, wedding makeup artist Chennai, HD bridal makeup Chennai, Ultra HD makeup Chennai, bridal hairstyling Chennai, saree pre-pleating Chennai, bridal mehendi Chennai, bridesmaid makeup Chennai, groom makeup Chennai, bridal makeup artist Tamil Nadu"
+      ),
+      setManagedMeta('meta[name="author"]', "name", "author", "RS Bridal"),
+      setManagedMeta(
+        'meta[name="robots"]',
+        "name",
+        "robots",
+        "index, follow, max-image-preview:large"
+      ),
+      setManagedMeta(
+        'meta[name="googlebot"]',
+        "name",
+        "googlebot",
+        "index, follow, max-image-preview:large"
+      ),
+      setManagedMeta('meta[name="theme-color"]', "name", "theme-color", "#7a111a"),
+      setManagedMeta('meta[property="og:site_name"]', "property", "og:site_name", "RS Bridal"),
+      setManagedMeta('meta[property="og:locale"]', "property", "og:locale", "en_IN"),
+      setManagedMeta(
+        'meta[property="og:image:alt"]',
+        "property",
+        "og:image:alt",
+        "RS Bridal makeup artist offering bridal services in Chennai"
+      ),
+      setManagedMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image"),
+      setManagedMeta(
+        'meta[name="twitter:image:alt"]',
+        "name",
+        "twitter:image:alt",
+        "RS Bridal personalised bridal makeup in Chennai"
+      ),
+    ];
+
+    const cleanupAlternateLinks = [
+      setManagedAlternateLink("en-IN", HOME_URL),
+      setManagedAlternateLink("x-default", HOME_URL),
+    ];
+
+    setStructuredData({
+      id: "rs-bridal-site-schema",
+      data: SITE_STRUCTURED_DATA,
+      matchText: `${SITE_URL}/#business`,
+      persist: true,
+    });
+
+    const cleanupHomePageSchema = setStructuredData({
+      id: "rs-bridal-homepage-schema",
+      data: HOME_PAGE_STRUCTURED_DATA,
+    });
+
+    const cleanupFaqSchema = setStructuredData({
+      id: "rs-bridal-faq-schema",
+      data: HOME_FAQ_STRUCTURED_DATA,
+    });
+
+    return () => {
+      cleanupFaqSchema();
+      cleanupHomePageSchema();
+      cleanupAlternateLinks.reverse().forEach(cleanup => cleanup());
+      cleanupAdditionalMetadata.reverse().forEach(cleanup => cleanup());
+      cleanupCoreMetadata();
+    };
+  }, []);
+
+  return null;
 }
 
 function Brand({ white }) {
@@ -894,7 +1169,7 @@ class BookingPage extends React.Component {
 
 
 function HomePage({ onBook }) {
-  return <div><Header onBook={onBook} /><main><Hero onBook={onBook} /><About onBook={onBook} /><TrustStrip /><Services onBook={onBook} /><Gallery onBook={onBook} /><FAQ onBook={onBook} /><WhyUs /><ServiceAreas onBook={onBook} /></main><Footer onBook={onBook} /><FloatingSocialDock /></div>;
+  return <div><HomeSeo /><Header onBook={onBook} /><main><Hero onBook={onBook} /><About onBook={onBook} /><TrustStrip /><Services onBook={onBook} /><Gallery onBook={onBook} /><FAQ onBook={onBook} /><WhyUs /><ServiceAreas onBook={onBook} /></main><Footer onBook={onBook} /><FloatingSocialDock /></div>;
 }
 
 class App extends React.Component {
