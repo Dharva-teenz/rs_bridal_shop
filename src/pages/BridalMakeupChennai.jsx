@@ -6,17 +6,17 @@ const PAGE_URL = `${SITE_URL}/bridal-makeup-artist-chennai`;
 const SOCIAL_IMAGE_URL = `${SITE_URL}/assets/images/artist1.png`;
 
 const PAGE_SEO = {
-  title: "Bridal Makeup Artist in Chennai | RS Bridal",
+  title: "Chennai Bridal Makeup Services | RS Bridal",
   description:
     "RS Bridal offers personalised bridal makeup in Chennai, including HD and Ultra HD makeup, hairstyling, saree draping and venue services across Tamil Nadu.",
   canonical: PAGE_URL,
-  ogTitle: "Bridal Makeup Artist in Chennai | RS Bridal",
+  ogTitle: "Chennai Bridal Makeup Services | RS Bridal",
   ogDescription:
     "Personalised bridal, engagement and reception makeup with hairstyling, saree draping and venue-based services in Chennai and across Tamil Nadu.",
   ogUrl: PAGE_URL,
   ogType: "website",
   ogImage: SOCIAL_IMAGE_URL,
-  twitterTitle: "Bridal Makeup Artist in Chennai | RS Bridal",
+  twitterTitle: "Chennai Bridal Makeup Services | RS Bridal",
   twitterDescription:
     "Bridal, engagement and reception makeup with hairstyling and saree draping in Chennai, with venue bookings across Tamil Nadu.",
   twitterImage: SOCIAL_IMAGE_URL,
@@ -123,7 +123,7 @@ const BREADCRUMB_SCHEMA = {
     {
       "@type": "ListItem",
       position: 2,
-      name: "Bridal Makeup Artist in Chennai",
+      name: "Chennai Bridal Makeup Services",
       item: PAGE_URL,
     },
   ],

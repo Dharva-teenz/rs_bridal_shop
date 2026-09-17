@@ -507,15 +507,15 @@ const BRAND_LOGO_URL = `${SITE_URL}/assets/images/rs-bridal-brand-logo.webp`;
 const SOCIAL_IMAGE_URL = `${SITE_URL}/assets/images/artist1.png`;
 
 const HOME_SEO_METADATA = {
-  title: "RS Bridal |Best Bridal Makeup Artist in Chennai & Tamil Nadu",
+  title: "RS Bridal |Best Bridal Makeup in Chennai & Tamil Nadu",
   description: "RS Bridal is a bridal makeup artist in Chennai offering HD and Ultra HD makeup, hairstyling, saree pre-pleating, mehendi and venue bookings across Tamil Nadu.",
   canonical: HOME_URL,
-  ogTitle: "RS Bridal |Best Bridal Makeup Artist in Chennai & Tamil Nadu",
+  ogTitle: "RS Bridal |Best Bridal Makeup in Chennai & Tamil Nadu",
   ogDescription: "Personalised bridal makeup, HD and Ultra HD makeup, hairstyling, saree pre-pleating, mehendi and wedding beauty services in Chennai and across Tamil Nadu.",
   ogUrl: HOME_URL,
   ogType: "website",
   ogImage: SOCIAL_IMAGE_URL,
-  twitterTitle: "RS Bridal |Best Bridal Makeup Artist in Chennai",
+  twitterTitle: "RS Bridal |Best Bridal Makeup in Chennai",
   twitterDescription: "Bridal makeup, hairstyling, saree pre-pleating, mehendi and venue-based wedding beauty services in Chennai and across Tamil Nadu.",
   twitterImage: SOCIAL_IMAGE_URL,
 };
