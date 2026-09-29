@@ -346,7 +346,7 @@ const serviceCategories = [
       },
       {
         name: "Pedicure",
-        image: `${IMG}/bridal-1.webp`,
+        image: serviceImage("Pedicure"),
         fallback: `${IMG}/bridal-1.webp`,
         summary: "Foot and nail grooming for a clean, neat and refreshed event-ready finish.",
         details: "Pedicure focuses on basic foot and toenail grooming, including nail shaping and salon finishing care. It can be booked as part of bridal preparation or as a regular beauty service.",
