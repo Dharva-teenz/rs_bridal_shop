@@ -21,8 +21,8 @@ const serviceImage = name => `${IMG}/services/${serviceImageFile(name)}.webp`;
 const CONFIG = {
   whatsappNumber: "9150109056",
   phoneDisplay: "9150109056",
-  instagramUrl: "https://instagram.com/suji_makeover_in_chennai_1",
-  instagramHandle: "suji_makeover_in_chennai_1",
+  instagramUrl: "https://instagram.com/suji_bridal_makeover",
+  instagramHandle: "suji_bridal_makeover",
   email: "sujimakeover1@gmail.com",
   primaryArea: "Chennai, Tamil Nadu",
 };
