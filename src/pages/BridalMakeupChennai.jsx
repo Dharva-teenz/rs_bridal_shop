@@ -379,4 +379,13 @@ class BridalMakeupChennai extends React.Component {
   }
 }
 
+// Used by scripts/prerender.mjs so the static HTML for this URL has the right head + schema.
+export const PAGE_STRUCTURED_DATA = [
+  { id: "rs-bridal-chennai-service-schema", data: SERVICE_SCHEMA },
+  { id: "rs-bridal-chennai-webpage-schema", data: WEB_PAGE_SCHEMA },
+  { id: "rs-bridal-chennai-breadcrumb-schema", data: BREADCRUMB_SCHEMA },
+  { id: "rs-bridal-chennai-faq-schema", data: FAQ_SCHEMA },
+];
+export { PAGE_SEO };
+
 export default BridalMakeupChennai;

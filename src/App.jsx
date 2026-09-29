@@ -10,6 +10,13 @@ const A = {
 };
 
 const IMG = import.meta.env.BASE_URL + "assets/images";
+const serviceImageFile = name =>
+  name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+const serviceImage = name => `${IMG}/services/${serviceImageFile(name)}.webp`;
 
 const CONFIG = {
   whatsappNumber: "9150109056",
@@ -26,37 +33,37 @@ const ABOUT_SUJI_PAGE_PATH = "/about-suji";
 const heroImage = `${IMG}/bidal-home.png`;
 
 const SERVICE_IMAGE_URLS = {
-  'HD Makeup': 'https://lyrabeauty.in/wp-content/uploads/2026/05/hd-bridal-makeup-ghaziabad-768x1024.jpeg',
-  'Ultra HD Makeup': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIXJ2CuCxkOmPiDsvn3ds9v9O5mi0VyTsN_qSgGmxH1A&s=10',
-  'Signature Look': 'https://hdmakeover.com/wp-content/uploads/2025/07/hd-bridal-makeup.webp',
-  'Glass Skin Finish Makeup': 'https://weddingbyte.com/uploads/blog/s2s.jpg',
-  'Pre-Wedding Shoot Makeup': 'https://trendview.co.in/wp-content/uploads/2023/12/Prewedding-look.jpg',
-  'Bridesmaid Makeup': `${IMG}/services/bridesmaid-makeup.webp`,
-  'Groom Makeup & Grooming': 'https://www.wedium.com/wp-content/uploads/2026/01/groom.jpg',
-  'Mehendi — Organic Cones': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqK7t1ODTxOb-cJlEWWxJXckaYZFttkbZSMy2ZIBq7UMEWS6nN4DiAx6o&s=10',
-  'Saree Pre-Pleating': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRICSBbzBqHgOA7lc15ZwcQSuioKpUK3ultrfFhT-oggGjAR_LLKBH_1EY&s=10',
-  'Hair Do & Hair Extensions': 'https://i.pinimg.com/736x/ef/65/1e/ef651e9966b3aa7b647554e9ddc95a24.jpg',
-  'Bridal Flower Making & Hair Floral Styling': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlmvp-1qJUiteIzhNpo35OwCOB2Ctdhthatmup4hOoYaiqt-jXBwOBoos&s=10',
-  'Golden Facial': 'https://www.yesmadam.com/blog/wp-content/uploads/2021/11/unnamed-3-8.jpg',
-  'Diamond Facial': `${IMG}/services/dimond_facial.png`,
-  'Pearl Facial': 'https://d3k88l35vy59af.cloudfront.net/A42/8696/1755758007277.jpeg',
-  'Fruit Facial': 'https://images.herzindagi.info/image/2021/Aug/best-products-for-fruit-facial-at-home.jpg',
-  'Skin Whitening Facial': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj0SEDrh97RY1U618LJze4wsbT1_Qvg6eOQjJuyLMzcJa7RyDwSgzaixnP&s=10',
-  'Skin Lightening Facial': 'https://caraclinics.com/wp-content/uploads/2025/05/Skin-Lightening-Chemical-Peels.jpg',
-  'Skin Brightening Facial': 'https://beautyfirstspa.com/cdn/shop/products/beautyfirstspa-brightening-treatment-38538264248564.png?v=1670604832',
-  'Wine Facial': 'https://images.boldsky.com/hi/img/2020/06/redwinefacial-jpg3-1592900809.jpg',
-  'De-Tan Treatment': 'https://anlonartsalon.com/wp-content/uploads/2026/02/De-Tan-Treatment-1.jpg',
-  'Waxing': 'https://artmassagephuket.com/wp-content/uploads/2012/08/Waxing-Phuket.jpg',
-  'Manicure': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4rqFto3qYjgVrzQ8MaI9WJ2nqupwIDt6o2dO1vLR1iHfQHTdVHro3pEqK&s=10',
-  'Pedicure': 'https://gorgeous-star.com/wp-content/uploads/2025/08/b16748775886d426d62e197fecfce734.jpg',
-  'Threading': 'https://5.imimg.com/data5/SELLER/Default/2022/2/XM/JX/SY/47412176/new-product-500x500.jpeg',
-  'Haircut': 'https://ladyandthehair.com.au/wp-content/uploads/2025/04/Butterfly-Cut-.jpg',
-  'Cleanup': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaGsypfZSiJCtGlkWw4pNvXg-eZSIDTW6L8wwNK5nGKSRuf5eyguzA1cs&s=10',
-  'Hair Straightening': 'https://techsquadteam.com/assets/profile/blogimages/9e0817d28da5bb896d7c5f8c898b8094.jpg',
-  'Nanoplastia': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZrsD6-PiZGDgXI9nhskG0_pFT8DALCVHuDMGZ4N_2mGmkbMPCzvWa1uEW&s=10',
-  'Hair Botox Spa': 'https://www.bodycraft.co.in/hubfs/Bodycraft/Images/Hair%20Botox%20Treatment%20in%20Mumbai.png',
-  'Keratin Treatment': 'https://img.magnific.com/free-photo/woman-washing-head-hairsalon_1157-27179.jpg?semt=ais_hybrid&w=740&q=80',
-  'Jewellery Set Rental': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfB64wEIVHHqd8YvpbI8KsNm8REEaxZfCbTEA4nzui37j6ZxgHktiAFzmx&s=10',
+  'HD Makeup': serviceImage('HD Makeup'),
+  'Ultra HD Makeup': serviceImage('Ultra HD Makeup'),
+  'Signature Look': serviceImage('Signature Look'),
+  'Glossy Skin Finish Makeup': serviceImage('Glossy Skin Finish Makeup'),
+  'Pre-Wedding Shoot Makeup': serviceImage('Pre-Wedding Shoot Makeup'),
+  'Bridesmaid Makeup': serviceImage('Bridesmaid Makeup'),
+  'Groom Makeup & Grooming': serviceImage('Groom Makeup & Grooming'),
+  'Mehendi — Organic Cones': serviceImage('Mehendi — Organic Cones'),
+  'Saree Pre-Pleating': serviceImage('Saree Pre-Pleating'),
+  'Hair Do & Hair Extensions': serviceImage('Hair Do & Hair Extensions'),
+  'Bridal Flower Making & Hair Floral Styling': serviceImage('Bridal Flower Making & Hair Floral Styling'),
+  'Golden Facial': serviceImage('Golden Facial'),
+  'Diamond Facial': serviceImage('Diamond Facial'),
+  'Pearl Facial': serviceImage('Pearl Facial'),
+  'Fruit Facial': serviceImage('Fruit Facial'),
+  'Skin Whitening Facial': serviceImage('Skin Whitening Facial'),
+  'Skin Lightening Facial': serviceImage('Skin Lightening Facial'),
+  'Skin Brightening Facial': serviceImage('Skin Brightening Facial'),
+  'Wine Facial': serviceImage('Wine Facial'),
+  'De-Tan Treatment': serviceImage('De-Tan Treatment'),
+  'Waxing': serviceImage('Waxing'),
+  'Manicure': serviceImage('Manicure'),
+  'Pedicure': serviceImage('Pedicure'),
+  'Threading': serviceImage('Threading'),
+  'Haircut': serviceImage('Haircut'),
+  'Cleanup': serviceImage('Cleanup'),
+  'Hair Straightening': serviceImage('Hair Straightening'),
+  'Nanoplastia': serviceImage('Nanoplastia'),
+  'Hair Botox Spa': serviceImage('Hair Botox Spa'),
+  'Keratin Treatment': serviceImage('Keratin Treatment'),
+  'Jewellery Set Rental': serviceImage('Jewellery Set Rental'),
 };
 
 const serviceCategories = [
@@ -66,7 +73,7 @@ const serviceCategories = [
     services: [
       {
         name: "HD Makeup",
-        image: SERVICE_IMAGE_URLS['HD Makeup'],
+        image: serviceImage("HD Makeup"),
         fallback: `${IMG}/bridal-4.webp`,
         summary: "A refined high-definition bridal finish created to look smooth and polished in close-up photos and video.",
         details: "HD Makeup is designed for brides who want a clean, photo-ready finish that still looks elegant in person. The look is planned around your outfit, jewellery, skin preference and event timing, with extra attention to base blending, eye definition and long-event setting.",
@@ -78,7 +85,7 @@ const serviceCategories = [
       },
       {
         name: "Ultra HD Makeup",
-        image: SERVICE_IMAGE_URLS['Ultra HD Makeup'],
+        image: serviceImage("Ultra HD Makeup"),
         fallback: `${IMG}/bridal-1.webp`,
         summary: "An enhanced high-definition bridal finish with added detailing for high-resolution photography and stage lighting.",
         details: "Ultra HD Makeup builds on the HD look with more detailed complexion work, refined finishing and face contouring for brides who want a more polished camera-ready result. The finish can be customised from soft bridal to defined glam based on the outfit and event style.",
@@ -90,7 +97,7 @@ const serviceCategories = [
       },
       {
         name: "Signature Look",
-        image: SERVICE_IMAGE_URLS['Signature Look'],
+        image: serviceImage("Signature Look"),
         fallback: `${IMG}/bridal-5.webp`,
         summary: "A complete premium bridal look with coordinated makeup, hair and finishing details for a distinctive RS Bridal style.",
         details: "The Signature Look is a more customised bridal package built around the bride's face, outfit, jewellery and event mood. Makeup, eye detailing, complexion shaping and hairstyle are planned together so the complete look feels cohesive rather than like separate services.",
@@ -102,7 +109,7 @@ const serviceCategories = [
       },
       {
         name: "Glossy Skin Finish Makeup",
-        image: SERVICE_IMAGE_URLS['Glass Skin Finish Makeup'],
+        image: serviceImage("Glossy Skin Finish Makeup"),
         fallback: `${IMG}/bridal-5.1.webp`,
         summary: "A luminous, fresh bridal finish focused on smooth-looking skin, soft dimension and an elegant glow.",
         details: "Glossy Skin Finish Makeup is designed for brides who prefer a luminous, fresh and polished complexion rather than a heavy matte appearance. The final finish is balanced for photography while keeping the skin-looking glow controlled and refined.",
@@ -114,7 +121,7 @@ const serviceCategories = [
       },
       {
         name: "Pre-Wedding Shoot Makeup",
-        image: SERVICE_IMAGE_URLS['Pre-Wedding Shoot Makeup'],
+        image: serviceImage("Pre-Wedding Shoot Makeup"),
         fallback: `${IMG}/gallery-2.webp`,
         summary: "Flexible makeup and styling support for pre-wedding shoots with multiple outfits, looks and locations.",
         details: "Pre-wedding shoots often involve dress changes, different locations and more than one visual mood. This service is planned around the number of looks, outfit changes, shoot locations, timing and the level of touch-up or hairstyle changes required across the session.",
@@ -126,7 +133,7 @@ const serviceCategories = [
       },
       {
         name: "Bridesmaid Makeup",
-        image: SERVICE_IMAGE_URLS['Bridesmaid Makeup'],
+        image: serviceImage("Bridesmaid Makeup"),
         fallback: `${IMG}/bridal-2.webp`,
         summary: "Elegant event makeup for bridesmaids, styled to complement the wedding palette without overpowering the bride.",
         details: "Bridesmaid Makeup is planned as a polished occasion look that works well in wedding photos and stays coordinated with the event. The finish can be kept soft, classic or slightly glamorous depending on the outfit and personal preference.",
@@ -138,7 +145,7 @@ const serviceCategories = [
       },
       {
         name: "Groom Makeup & Grooming",
-        image: SERVICE_IMAGE_URLS['Groom Makeup & Grooming'],
+        image: serviceImage("Groom Makeup & Grooming"),
         fallback: `${IMG}/gallery-3.webp`,
         summary: "Subtle groom grooming focused on a neat, natural and camera-ready wedding-day finish.",
         details: "Groom Makeup & Grooming keeps the overall appearance natural while helping with shine control, complexion balancing, beard finishing and hairstyle setting. The goal is a clean, well-groomed look that photographs well without looking heavily made up.",
@@ -151,7 +158,7 @@ const serviceCategories = [
       {
         name: "Mehendi — Organic Cones",
         badge: "Organic Cones",
-        image: SERVICE_IMAGE_URLS['Mehendi — Organic Cones'],
+        image: serviceImage("Mehendi — Organic Cones"),
         fallback: `${IMG}/bridal-3.webp`,
         summary: "Bridal and occasion mehendi using organic-cone styling, with hand and leg coverage options.",
         details: "Mehendi can be planned from elegant occasion patterns to fuller bridal coverage. The final design and time required depend on the requested detail level and coverage area. Organic cones are highlighted for this service as requested by the client.",
@@ -163,7 +170,7 @@ const serviceCategories = [
       },
       {
         name: "Saree Pre-Pleating",
-        image: SERVICE_IMAGE_URLS['Saree Pre-Pleating'],
+        image: serviceImage("Saree Pre-Pleating"),
         fallback: `${IMG}/gallery-1.webp`,
         summary: "Pre-pleating service for a neater, faster and more organised saree drape on the event day.",
         details: "Saree Pre-Pleating prepares the main pleats in advance so the saree is easier to drape neatly and quickly. Choose between normal pleating and a puffier pleat style depending on the saree fabric and the silhouette you prefer.",
@@ -174,7 +181,7 @@ const serviceCategories = [
       },
       {
         name: "Hair Do & Hair Extensions",
-        image: SERVICE_IMAGE_URLS['Hair Do & Hair Extensions'],
+        image: serviceImage("Hair Do & Hair Extensions"),
         fallback: `${IMG}/bridal-2.webp`,
         summary: "Bridal and occasion hairstyles with extension support when extra length or volume is needed.",
         details: "Hair Do & Hair Extensions can be planned around the face shape, outfit neckline, jewellery, veil or flowers. Extensions may be used when the selected hairstyle needs additional length or volume, subject to the style and available extension match.",
@@ -185,7 +192,7 @@ const serviceCategories = [
       },
       {
         name: "Bridal Flower Making & Hair Floral Styling",
-        image: SERVICE_IMAGE_URLS['Bridal Flower Making & Hair Floral Styling'],
+        image: serviceImage("Bridal Flower Making & Hair Floral Styling"),
         fallback: `${IMG}/bridal-1.webp`,
         summary: "Custom floral hair arrangements designed to complement bridal buns, braids and traditional wedding styling.",
         details: "Flower Making & Hair Floral Styling focuses on preparing and arranging flowers to suit the chosen bridal hairstyle. The style can range from neat traditional floral wrapping to fuller bun or braid arrangements based on flower choice, hairstyle and overall bridal look.",
@@ -196,7 +203,7 @@ const serviceCategories = [
       },
       {
         name: "Jewellery Set Rental",
-        image: SERVICE_IMAGE_URLS['Jewellery Set Rental'],
+        image: serviceImage("Jewellery Set Rental"),
         fallback: `${IMG}/bridal-4.webp`,
         summary: "Rental access to bridal jewellery sets, with two full catalogues available to browse from the service detail.",
         details: "Jewellery Set Rental allows brides to review available bridal jewellery options and choose a set that works with the outfit and makeup plan. Use the catalogue buttons below to open the two jewellery PDFs once the client catalogue files are added to the project.",
@@ -218,7 +225,7 @@ const serviceCategories = [
     services: [
       {
         name: "Golden Facial",
-        image: SERVICE_IMAGE_URLS['Golden Facial'],
+        image: serviceImage("Golden Facial"),
         fallback: `${IMG}/gallery-1.webp`,
         summary: "A classic glow-focused facial routine with cleansing, exfoliation, massage and a finishing mask.",
         details: "Golden Facial is a salon facial designed around a refreshed, polished appearance. The session typically combines cleansing, gentle exfoliation, massage and a gold-themed facial kit or mask selected by the artist for the service.",
@@ -229,7 +236,7 @@ const serviceCategories = [
       },
       {
         name: "Diamond Facial",
-        image: SERVICE_IMAGE_URLS['Diamond Facial'],
+        image: serviceImage("Diamond Facial"),
         fallback: `${IMG}/gallery-2.webp`,
         summary: "A polishing-style salon facial focused on cleansing, exfoliation and a smooth, refreshed finish.",
         details: "Diamond Facial uses a diamond-themed salon facial routine that usually focuses on cleansing, exfoliation, massage and a finishing pack. It is intended as an event-prep beauty service rather than a medical skin treatment.",
@@ -240,7 +247,7 @@ const serviceCategories = [
       },
       {
         name: "Pearl Facial",
-        image: SERVICE_IMAGE_URLS['Pearl Facial'],
+        image: serviceImage("Pearl Facial"),
         fallback: `${IMG}/gallery-3.webp`,
         summary: "A gentle pearl-themed facial routine for a clean, soft and refreshed appearance before an event.",
         details: "Pearl Facial is a traditional salon facial commonly built around cleansing, mild exfoliation, massage and a pearl-themed facial pack. It is a simple option for clients who want a fresh, groomed look without a heavy treatment routine.",
@@ -251,7 +258,7 @@ const serviceCategories = [
       },
       {
         name: "Fruit Facial",
-        image: SERVICE_IMAGE_URLS['Fruit Facial'],
+        image: serviceImage("Fruit Facial"),
         fallback: `${IMG}/bridal-3.webp`,
         summary: "A fruit-extract inspired facial routine for cleansing, light exfoliation and a fresh salon finish.",
         details: "Fruit Facial uses fruit-themed or fruit-extract salon products as part of a standard cleansing, exfoliation, massage and mask routine. It is suited to clients looking for a simple refresh before a function or regular grooming session.",
@@ -262,7 +269,7 @@ const serviceCategories = [
       },
       {
         name: "Skin Whitening Facial",
-        image: SERVICE_IMAGE_URLS['Skin Whitening Facial'],
+        image: serviceImage("Skin Whitening Facial"),
         fallback: `${IMG}/bridal-5.webp`,
         summary: "A brightness-focused salon facial for a cleaner, fresher and more even-looking finish.",
         details: "Skin Whitening Facial is kept as the client's service name, but the treatment is presented as a brightness-focused salon facial. The aim is to refresh dull-looking skin and improve the appearance of surface unevenness; it does not change a person's natural skin tone.",
@@ -273,7 +280,7 @@ const serviceCategories = [
       },
       {
         name: "Skin Lightening Facial",
-        image: SERVICE_IMAGE_URLS['Skin Lightening Facial'],
+        image: serviceImage("Skin Lightening Facial"),
         fallback: `${IMG}/bridal-5.1.webp`,
         summary: "A salon facial focused on reducing dull appearance and supporting a fresh, even-looking finish.",
         details: "Skin Lightening Facial is a brightness-oriented beauty service using cleansing, exfoliation and salon products selected for a refreshed appearance. It is described conservatively on the website and is not presented as a permanent complexion-changing treatment.",
@@ -284,7 +291,7 @@ const serviceCategories = [
       },
       {
         name: "Skin Brightening Facial",
-        image: SERVICE_IMAGE_URLS['Skin Brightening Facial'],
+        image: serviceImage("Skin Brightening Facial"),
         fallback: `${IMG}/bridal-4.webp`,
         summary: "A premium brightening facial routine focused on a refreshed, polished and event-ready skin appearance.",
         details: "Skin Brightening Facial combines salon cleansing, exfoliation, massage and brightening-focused products to help the skin look fresh and prepared for an occasion. The exact routine can be adjusted based on the client's skin comfort and product suitability.",
@@ -295,7 +302,7 @@ const serviceCategories = [
       },
       {
         name: "Wine Facial",
-        image: SERVICE_IMAGE_URLS['Wine Facial'],
+        image: serviceImage("Wine Facial"),
         fallback: `${IMG}/gallery-1.webp`,
         summary: "A grape/wine-extract inspired salon facial for cleansing, massage and a refreshed glow-focused finish.",
         details: "Wine Facial is the commonly used salon name for a facial routine built around grape- or wine-extract themed products. The service generally follows cleansing, exfoliation, massage and a finishing mask for a refreshed appearance without making medical skin claims.",
@@ -306,7 +313,7 @@ const serviceCategories = [
       },
       {
         name: "De-Tan Treatment",
-        image: SERVICE_IMAGE_URLS['De-Tan Treatment'],
+        image: serviceImage("De-Tan Treatment"),
         fallback: `${IMG}/gallery-2.webp`,
         summary: "A salon de-tan service focused on reducing the appearance of surface tan, dullness and uneven-looking skin.",
         details: "De-Tan is the clearer spelling for the client's D.Tan service. The salon routine usually includes cleansing, mild exfoliation and a de-tan pack intended to reduce the appearance of sun-exposed dullness and surface tanning while keeping the natural complexion unchanged.",
@@ -317,7 +324,7 @@ const serviceCategories = [
       },
       {
         name: "Waxing",
-        image: SERVICE_IMAGE_URLS['Waxing'],
+        image: serviceImage("Waxing"),
         fallback: `${IMG}/gallery-3.webp`,
         summary: "Salon waxing for arms and legs with separate pricing by service area.",
         details: "Waxing removes hair from the root using a salon waxing method. Choose the required area while enquiring so the appointment can be planned with the correct service time.",
@@ -328,7 +335,7 @@ const serviceCategories = [
       },
       {
         name: "Manicure",
-        image: SERVICE_IMAGE_URLS['Manicure'],
+        image: serviceImage("Manicure"),
         fallback: `${IMG}/bridal-2.webp`,
         summary: "Hand and nail grooming for a clean, neat and event-ready finish.",
         details: "Manicure focuses on basic hand and nail grooming, including nail shaping, cuticle-area care and finishing steps based on the salon routine. It is a useful add-on before weddings, functions and photo sessions.",
@@ -339,7 +346,7 @@ const serviceCategories = [
       },
       {
         name: "Pedicure",
-        image: SERVICE_IMAGE_URLS['Pedicure'],
+        image: `${IMG}/bridal-1.webp`,
         fallback: `${IMG}/bridal-1.webp`,
         summary: "Foot and nail grooming for a clean, neat and refreshed event-ready finish.",
         details: "Pedicure focuses on basic foot and toenail grooming, including nail shaping and salon finishing care. It can be booked as part of bridal preparation or as a regular beauty service.",
@@ -350,7 +357,7 @@ const serviceCategories = [
       },
       {
         name: "Threading",
-        image: SERVICE_IMAGE_URLS['Threading'],
+        image: serviceImage("Threading"),
         fallback: `${IMG}/bridal-5.webp`,
         summary: "Quick facial hair shaping and cleanup using traditional threading technique.",
         details: "Threading is used for precise hair removal and shaping in areas such as the eyebrows or upper-lip area, depending on the client's requirement. The exact area can be confirmed at booking.",
@@ -361,7 +368,7 @@ const serviceCategories = [
       },
       {
         name: "Haircut",
-        image: SERVICE_IMAGE_URLS['Haircut'],
+        image: serviceImage("Haircut"),
         fallback: `${IMG}/bridal-3.webp`,
         summary: "Classic and layered haircut options with pricing by selected cut and hair length where applicable.",
         details: "Choose from simple straight, U, V, butterfly or layer cuts. The style is selected around the current hair length, density and the shape the client wants to maintain. Butterfly cut pricing is confirmed after checking hair length.",
@@ -372,7 +379,7 @@ const serviceCategories = [
       },
       {
         name: "Cleanup",
-        image: SERVICE_IMAGE_URLS['Cleanup'],
+        image: serviceImage("Cleanup"),
         fallback: `${IMG}/gallery-1.webp`,
         summary: "A simple face cleanup service for cleansing, mild exfoliation and a fresh, tidy finish.",
         details: "Cleanup is a lighter salon face-care service than a full facial. It focuses on cleansing, gentle exfoliation and finishing steps to refresh the skin before a function or as part of regular grooming.",
@@ -389,7 +396,7 @@ const serviceCategories = [
     services: [
       {
         name: "Hair Straightening",
-        image: SERVICE_IMAGE_URLS['Hair Straightening'],
+        image: serviceImage("Hair Straightening"),
         fallback: `${IMG}/bridal-2.webp`,
         summary: "A salon straightening service for clients who want a straighter, more controlled hair finish.",
         details: "Hair Straightening is a professional chemical-and-heat salon service designed to create a straighter finish. Suitability depends on current hair condition, previous colouring or chemical services, length and the final result expected, so an in-person hair assessment is important before proceeding.",
@@ -401,7 +408,7 @@ const serviceCategories = [
       },
       {
         name: "Nanoplastia",
-        image: SERVICE_IMAGE_URLS['Nanoplastia'],
+        image: serviceImage("Nanoplastia"),
         fallback: `${IMG}/bridal-5.1.webp`,
         summary: "A professional smoothing treatment intended to reduce frizz and create a sleeker, more manageable finish.",
         details: "Nanoplastia is a modern salon smoothing treatment commonly marketed for reducing frizz and improving smoothness and shine. The exact formula and result can differ by product, so the service should be selected only after checking hair condition, previous treatments and the finish the client wants.",
@@ -413,7 +420,7 @@ const serviceCategories = [
       },
       {
         name: "Hair Botox Spa",
-        image: SERVICE_IMAGE_URLS['Hair Botox Spa'],
+        image: serviceImage("Hair Botox Spa"),
         fallback: `${IMG}/bridal-1.webp`,
         summary: "A deep-conditioning, smoothing salon service focused on softness, shine and improved manageability.",
         details: "Hair Botox is a salon marketing term for an intensive conditioning and smoothing treatment; it does not involve injectable botulinum toxin. The service is generally chosen for dry, frizzy or stressed-looking hair when the goal is softness and a more polished finish rather than permanent straightening.",
@@ -425,7 +432,7 @@ const serviceCategories = [
       },
       {
         name: "Keratin Treatment",
-        image: SERVICE_IMAGE_URLS['Keratin Treatment'],
+        image: serviceImage("Keratin Treatment"),
         fallback: `${IMG}/bridal-4.webp`,
         summary: "A professional keratin smoothing service focused on frizz control, shine and easier hair management.",
         details: "Keratin Treatment is a salon smoothing service used to reduce frizz and create a sleeker, easier-to-manage finish. The exact product system, processing time and suitability depend on hair history, texture, colour treatments and the amount of smoothing the client wants.",
@@ -507,15 +514,15 @@ const BRAND_LOGO_URL = `${SITE_URL}/assets/images/rs-bridal-brand-logo.webp`;
 const SOCIAL_IMAGE_URL = `${SITE_URL}/assets/images/artist1.png`;
 
 const HOME_SEO_METADATA = {
-  title: "RS Bridal |Best Bridal Makeup in Chennai & Tamil Nadu",
+  title: "RS Bridal | Bridal Makeup Artist in Chennai & Tamil Nadu",
   description: "RS Bridal is a bridal makeup artist in Chennai offering HD and Ultra HD makeup, hairstyling, saree pre-pleating, mehendi and venue bookings across Tamil Nadu.",
   canonical: HOME_URL,
-  ogTitle: "RS Bridal |Best Bridal Makeup in Chennai & Tamil Nadu",
+  ogTitle: "RS Bridal | Bridal Makeup Artist in Chennai & Tamil Nadu",
   ogDescription: "Personalised bridal makeup, HD and Ultra HD makeup, hairstyling, saree pre-pleating, mehendi and wedding beauty services in Chennai and across Tamil Nadu.",
   ogUrl: HOME_URL,
   ogType: "website",
   ogImage: SOCIAL_IMAGE_URL,
-  twitterTitle: "RS Bridal |Best Bridal Makeup in Chennai",
+  twitterTitle: "RS Bridal | Bridal Makeup Artist in Chennai",
   twitterDescription: "Bridal makeup, hairstyling, saree pre-pleating, mehendi and venue-based wedding beauty services in Chennai and across Tamil Nadu.",
   twitterImage: SOCIAL_IMAGE_URL,
 };
@@ -1005,10 +1012,10 @@ function Hero({ onBook }) {
 function About({ onBook }) {
   return <section id="about" className="section-anchor bg-[#fffdfb] py-20 sm:py-24">
     <div className="mx-auto grid max-w-[1420px] items-center gap-8 px-5 sm:gap-10 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:gap-16 lg:px-8">
-      <motion.div {...A.slideLeft(0.1)} className="relative"><div className="mx-auto max-w-[320px] overflow-hidden rounded-[24px] border border-[#eadfd5] bg-[#f3e5da] shadow-[0_16px_40px_rgba(69,35,27,.10)] sm:max-w-[400px] sm:rounded-[30px] sm:shadow-[0_22px_60px_rgba(69,35,27,.12)]"><img src={`${IMG}/services/artist.jpeg`} alt="RS Bridal makeup artist portrait" width="745" height="1825" loading="lazy" decoding="async" className="h-[380px] w-full object-cover object-top sm:h-[520px]" /></div></motion.div>
+      <motion.div {...A.slideLeft(0.1)} className="relative"><div className="mx-auto max-w-[320px] overflow-hidden rounded-[24px] border border-[#eadfd5] bg-[#f3e5da] shadow-[0_16px_40px_rgba(69,35,27,.10)] sm:max-w-[400px] sm:rounded-[30px] sm:shadow-[0_22px_60px_rgba(69,35,27,.12)]"><img src={`${IMG}/artist.jpeg`} alt="RS Bridal makeup artist portrait" width="745" height="1825" loading="lazy" decoding="async" className="h-[380px] w-full object-cover object-top sm:h-[520px]" /></div></motion.div>
       <motion.div {...A.slideRight(0.15)}><div><p className="section-kicker">ABOUT RS BRIDAL</p><h2 className="section-title text-[28px] leading-[1.1] sm:text-[clamp(2.45rem,4.2vw,3rem)]">Beauty That Feels Like You</h2><p className="mt-3 text-[13px] font-semibold tracking-[.04em] text-[#8a363b] sm:mt-4 sm:text-[14px]">Personalised bridal artistry for your most meaningful celebrations.</p><p className="mt-4 text-[14px] leading-6 text-[#655a54] sm:mt-6 sm:text-[15px] sm:leading-7">RS Bridal is built around one simple idea — every bride should feel like the most confident and beautiful version of herself on her wedding day. Each look is thoughtfully planned around the bride's features, outfit, jewellery, occasion, and personal preference rather than following one fixed makeup style.</p><p className="mt-3 text-[14px] leading-6 text-[#655a54] sm:mt-4 sm:text-[15px] sm:leading-7">Originally from Trichy and primarily serving bridal clients in Chennai, RS Bridal accepts wedding and beauty bookings across Tamil Nadu. Whether the celebration is intimate or grand, the focus remains on creating an elegant, comfortable, and timeless look that feels truly personal to the bride.</p>
         <div className="mt-5 grid gap-2.5 sm:mt-7 sm:grid-cols-2 sm:gap-3">{[["Personalised Looks", "Created around your features and personal style"], ["Bridal-Focused Beauty", "Thoughtful styling for your wedding celebrations"], ["Chennai Bookings", "Primary service area for bridal appointments"], ["Across Tamil Nadu", "Wedding bookings accepted throughout Tamil Nadu"]].map(([title, desc], i) => <motion.div key={title} {...A.fadeUp(0.3 + i * 0.08)} className="flex gap-2.5 rounded-[18px] border border-[#eadfd5] bg-[#fbf6f1] p-3.5 sm:gap-3 sm:rounded-[22px] sm:p-4"><span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#7a111a] text-white sm:h-6 sm:w-6"><Icon name="check" size={12} /></span><div><strong className="block text-[12px] text-[#29211e] sm:text-[13px]">{title}</strong><span className="mt-0.5 block text-[11px] leading-4 text-[#746963] sm:mt-1 sm:text-[12px] sm:leading-5">{desc}</span></div></motion.div>)}</div>
-        <motion.div {...A.fadeUp(0.6)} className="mt-6 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3"><button onClick={onBook} className="btn-primary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Book an Appointment</button><button onClick={() => scrollToSection("gallery")} className="btn-secondary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">See Makeup Work</button><button onClick={() => navigateTo("about-suji")} className="btn-secondary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Meet Suji</button></motion.div></div></motion.div>
+        <motion.div {...A.fadeUp(0.6)} className="mt-6 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3"><button onClick={onBook} className="btn-primary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Book an Appointment</button><button onClick={() => scrollToSection("gallery")} className="btn-secondary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">See Makeup Work</button><a href="/about-suji" onClick={e => { e.preventDefault(); navigateTo("about-suji"); }} className="btn-secondary !px-4 !py-2.5 !text-[13px] sm:!px-5 sm:!py-3 sm:!text-[14px]">Meet Suji</a></motion.div></div></motion.div>
     </div>
     <motion.div {...A.fadeUp(0.15)} className="mx-auto mt-10 max-w-[1420px] px-5 sm:mt-12 sm:px-6 lg:px-8">
       <div className="border-t border-[#eadfd5] pt-8 sm:pt-10">
@@ -1032,6 +1039,30 @@ function TrustStrip() {
   return <section className="border-y border-[#eadfd5] bg-[#faf4ee]"><div className="mx-auto grid max-w-[1420px] gap-0 px-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8 xl:px-10">{items.map(([icon, title, desc], i) => <motion.div key={title} {...A.fadeUp(0.1 + i * 0.08)} className={`flex gap-4 py-6 ${i ? "lg:border-l lg:border-[#eadfd5] lg:pl-7" : ""}`}><span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#ba7d7f] text-[#7a111a]"><Icon name={icon} /></span><div><strong className="block text-[13px] text-[#29211e]">{title}</strong><span className="mt-1 block text-[12px] leading-5 text-[#746963]">{desc}</span></div></motion.div>)}</div></section>;
 }
 
+class ServiceImage extends React.Component {
+  constructor(props) { super(props); this.state = { src: props.service.image, loaded: false, failed: false }; }
+  componentDidUpdate(prevProps) {
+    if (prevProps.service.image !== this.props.service.image) {
+      this.setState({ src: this.props.service.image, loaded: false, failed: false });
+    }
+  }
+  render() {
+    const { service, className, imageClassName, width = 900, height = 675, children } = this.props;
+    const showPlaceholder = !this.state.loaded || this.state.failed;
+    return <div className={className}>
+      {showPlaceholder && <div className="absolute inset-0 grid place-items-center bg-[#fbf6f1] px-4 text-center"><span className="brand-serif text-[20px] leading-tight text-[#7b252b]">{service.name}</span></div>}
+      {!this.state.failed && <img src={this.state.src} alt={service.name} title={service.name} width={width} height={height} loading="lazy" decoding="async" className={`${imageClassName} ${this.state.loaded ? "opacity-100" : "opacity-0"}`} onLoad={() => this.setState({ loaded: true })} onError={() => {
+        if (service.fallback && this.state.src !== service.fallback) {
+          this.setState({ src: service.fallback, loaded: false });
+        } else {
+          this.setState({ failed: true, loaded: false });
+        }
+      }} />}
+      {children}
+    </div>;
+  }
+}
+
 class Services extends React.Component {
   constructor(props) { super(props); this.state = { selected: null }; }
   render() {
@@ -1044,7 +1075,7 @@ class Services extends React.Component {
           <h3 className="brand-serif text-[34px] leading-tight text-[#2a1d1b] sm:text-[42px]">{category.name}</h3>
           <p className="mx-auto mt-2 max-w-[660px] text-[12px] leading-6 text-[#746963] sm:text-[13px]">{category.description}</p>
         </motion.div>
-        <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{category.services.map((service, index) => <motion.article key={service.name} {...A.fadeUp(0.08 + index * 0.04)} className="card-lift flex h-full flex-col overflow-hidden rounded-[24px] border border-[#eadfd5] bg-white"><div className="relative h-[190px] overflow-hidden bg-[#eee2d8] sm:h-[210px]"><img src={service.image} alt={`${service.name} service at RS Bridal`} loading="lazy" referrerPolicy="no-referrer" className="service-image h-full w-full object-cover" onError={e => { if (service.fallback) { e.currentTarget.onerror = null; e.currentTarget.src = service.fallback; } }} />{service.badge && <span className="absolute right-3 top-3 rounded-full bg-[#7a111a] px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-[.08em] text-white shadow-sm">{service.badge}</span>}</div><div className="flex flex-1 flex-col p-4 sm:p-5"><h4 className="brand-serif text-[17px] leading-snug text-[#241a17] sm:text-[19px]">{service.name}</h4><p className="mt-2 flex-1 text-[12px] leading-[20px] text-[#6a5d57] sm:text-[12.5px] sm:leading-[21px]">{service.summary}</p><div className="mt-4 flex items-center justify-between gap-3 border-t border-[#eee3da] pt-3"><span className="text-[9px] font-semibold uppercase tracking-[.1em] text-[#8b6f61] sm:text-[10px]">Details & price</span><button onClick={() => this.setState({ selected: { ...service, category: category.name } })} className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-[12px] font-bold text-[#7a111a] transition hover:bg-[#fbf0ea]">Explore <Icon name="arrow" size={14} /></button></div></div></motion.article>)}</div>
+        <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{category.services.map((service, index) => <motion.article key={service.name} {...A.fadeUp(0.08 + index * 0.04)} className="card-lift flex h-full flex-col overflow-hidden rounded-[24px] border border-[#eadfd5] bg-white"><ServiceImage service={service} className="relative h-[190px] overflow-hidden bg-[#eee2d8] sm:h-[210px]" imageClassName="service-image h-full w-full object-cover transition-opacity duration-200">{service.badge && <span className="absolute right-3 top-3 rounded-full bg-[#7a111a] px-3 py-1.5 text-[9px] font-extrabold uppercase tracking-[.08em] text-white shadow-sm">{service.badge}</span>}</ServiceImage><div className="flex flex-1 flex-col p-4 sm:p-5"><h4 className="brand-serif text-[17px] leading-snug text-[#241a17] sm:text-[19px]">{service.name}</h4><p className="mt-2 flex-1 text-[12px] leading-[20px] text-[#6a5d57] sm:text-[12.5px] sm:leading-[21px]">{service.summary}</p><div className="mt-4 flex items-center justify-between gap-3 border-t border-[#eee3da] pt-3"><span className="text-[9px] font-semibold uppercase tracking-[.1em] text-[#8b6f61] sm:text-[10px]">Details & price</span><button onClick={() => this.setState({ selected: { ...service, category: category.name } })} className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-[12px] font-bold text-[#7a111a] transition hover:bg-[#fbf0ea]">Explore <Icon name="arrow" size={14} /></button></div></div></motion.article>)}</div>
       </div>)}
       <motion.div {...A.fadeUp(0.7)} className="mt-12 text-center"><button onClick={onBook} className="btn-primary"><Icon name="calendar" size={17} /> Book Your Service</button></motion.div>
     </div>{selected && <ServiceModal service={selected} onClose={() => this.setState({ selected: null })} onBook={() => { const name = selected.name; this.setState({ selected: null }, () => onBook(name)); }} />}</section>;
@@ -1070,7 +1101,7 @@ class ServiceModal extends React.Component {
     const hasPriceOptions = service.priceOptions?.length > 0;
     const hasComplimentary = service.complimentary?.length > 0;
     const hasCatalogs = service.catalogs?.length > 0;
-    return <div className="modal-backdrop fixed inset-0 z-[70] grid place-items-center bg-black/55 p-3 sm:p-4" onMouseDown={e => e.target === e.currentTarget && onClose()}><div className="modal-panel max-h-[90vh] w-full max-w-[980px] overflow-auto rounded-[22px] bg-[#fffdfb] shadow-2xl sm:max-h-[92vh] sm:rounded-[30px]"><div className="grid md:grid-cols-[.78fr_1.22fr]"><div className="min-h-[190px] bg-[#ead9cb] sm:min-h-[300px]"><img src={service.image} alt={`${service.name} detailed service view`} referrerPolicy="no-referrer" className="h-full min-h-[190px] w-full object-cover sm:min-h-[300px]" onError={e => { if (service.fallback) { e.currentTarget.onerror = null; e.currentTarget.src = service.fallback; } }} /></div><div className="p-4 sm:p-8"><div className="flex items-start justify-between gap-3"><div><p className="section-kicker">{service.category || "SERVICE DETAIL"}</p><h2 className="brand-serif mt-1 text-[24px] leading-tight text-[#241a17] sm:mt-2 sm:text-[36px]">{service.name}</h2></div><button onClick={onClose} className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#e1d3c9] text-[#6d171d] sm:h-10 sm:w-10" aria-label="Close service details"><Icon name="close" size={16} /></button></div><p className="mt-3 text-[13px] leading-6 text-[#665a54] sm:mt-5 sm:text-[14px] sm:leading-7">{service.details}</p>
+    return <div className="modal-backdrop fixed inset-0 z-[70] grid place-items-center bg-black/55 p-3 sm:p-4" onMouseDown={e => e.target === e.currentTarget && onClose()}><div className="modal-panel max-h-[90vh] w-full max-w-[980px] overflow-auto rounded-[22px] bg-[#fffdfb] shadow-2xl sm:max-h-[92vh] sm:rounded-[30px]"><div className="grid md:grid-cols-[.78fr_1.22fr]"><ServiceImage service={service} className="relative min-h-[190px] overflow-hidden bg-[#ead9cb] sm:min-h-[300px]" imageClassName="h-full min-h-[190px] w-full object-cover transition-opacity duration-200 sm:min-h-[300px]" /><div className="p-4 sm:p-8"><div className="flex items-start justify-between gap-3"><div><p className="section-kicker">{service.category || "SERVICE DETAIL"}</p><h2 className="brand-serif mt-1 text-[24px] leading-tight text-[#241a17] sm:mt-2 sm:text-[36px]">{service.name}</h2></div><button onClick={onClose} className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#e1d3c9] text-[#6d171d] sm:h-10 sm:w-10" aria-label="Close service details"><Icon name="close" size={16} /></button></div><p className="mt-3 text-[13px] leading-6 text-[#665a54] sm:mt-5 sm:text-[14px] sm:leading-7">{service.details}</p>
       <div className="mt-4 grid gap-3 sm:mt-6 sm:grid-cols-2"><div className="rounded-[18px] border border-[#eadfd5] bg-[#fbf5ef] p-4 sm:rounded-[22px] sm:p-5"><strong className="text-[10px] uppercase tracking-[.12em] text-[#7b252b]">Best for</strong><p className="mt-1.5 text-[13px] leading-5 text-[#413733] sm:mt-2">{service.bestFor}</p></div><div className="rounded-[18px] border border-[#dfc8bc] bg-[#74121a] p-4 text-white sm:rounded-[22px] sm:p-5"><strong className="text-[10px] uppercase tracking-[.14em] text-[#efc6b5]">Price</strong>{hasPriceOptions ? <div className="mt-2 grid gap-2">{service.priceOptions.map(([label, price]) => <div key={label} className="flex items-center justify-between gap-3 border-b border-white/10 pb-2 last:border-0 last:pb-0"><span className="text-[11px] text-white/75">{label}</span><strong className="text-[13px]">{price}</strong></div>)}</div> : <strong className="brand-serif mt-2 block text-[25px] leading-tight text-white">{service.price || "Price on consultation"}</strong>}{service.priceNote && <p className="mt-2 text-[10px] leading-4 text-white/65">{service.priceNote}</p>}</div></div>
       <h3 className="mt-4 text-[10px] font-bold uppercase tracking-[.14em] text-[#7b252b] sm:mt-6">What this service includes</h3><div className="mt-2 grid gap-1.5 sm:mt-3 sm:grid-cols-2 sm:gap-2">{service.includes.map(item => <div key={item} className="flex gap-2 text-[12px] leading-5 text-[#554a45] sm:gap-3 sm:text-[13px]"><span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-[#7a111a] text-white sm:h-5 sm:w-5"><Icon name="check" size={10} /></span>{item}</div>)}</div>
       {hasComplimentary && <><h3 className="mt-5 text-[10px] font-bold uppercase tracking-[.14em] text-[#7b252b]">Complimentary</h3><div className="mt-2 flex flex-wrap gap-2">{service.complimentary.map(item => <span key={item} className="rounded-full border border-[#dfc9bd] bg-[#fff8f4] px-3 py-1.5 text-[10px] font-semibold text-[#6f292d] sm:text-[11px]">{item}</span>)}</div></>}
@@ -1209,5 +1240,7 @@ class App extends React.Component {
     );
   }
 }
+
+export { HOME_SEO_METADATA, HOME_PAGE_STRUCTURED_DATA, HOME_FAQ_STRUCTURED_DATA };
 
 export default App;

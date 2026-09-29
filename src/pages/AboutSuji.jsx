@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const SITE_URL = "https://www.rsbridal.in";
 const PAGE_URL = `${SITE_URL}/about-suji`;
-const PROFILE_IMAGE_URL = `${SITE_URL}/assets/catalogs/artist1.png`;
+const PROFILE_IMAGE_URL = `${SITE_URL}/assets/images/artist1.png`;
 const INSTAGRAM_URL = "https://instagram.com/suji_makeover_in_chennai_1";
 
 const ABOUT_SUJI_SEO = {
@@ -182,7 +182,7 @@ class AboutSuji extends React.Component {
     const { onBook, ui } = this.props;
     const { A, Brand, Footer, FloatingSocialDock, Icon } = ui;
     const IMG = import.meta.env.BASE_URL + "assets/images";
-    const profilePrimary = import.meta.env.BASE_URL + "assets/catalogs/artist1.png";
+    const profilePrimary = import.meta.env.BASE_URL + "assets/images/artist1.png";
     const profileFallback = `${IMG}/artist1.png`;
     const videoPrimary = import.meta.env.BASE_URL + "assets/catalogs/best_makup_artist.mp4";
     const videoFallback = import.meta.env.BASE_URL + "assets/catalogs/best_makeup_artist.mp4";
@@ -369,5 +369,13 @@ class AboutSuji extends React.Component {
     );
   }
 }
+
+// Used by scripts/prerender.mjs so the static HTML for this URL has the right head + schema.
+export const PAGE_STRUCTURED_DATA = [
+  { id: "rs-bridal-about-person-schema", data: PERSON_SCHEMA },
+  { id: "rs-bridal-about-profile-schema", data: PROFILE_PAGE_SCHEMA },
+  { id: "rs-bridal-about-breadcrumb-schema", data: BREADCRUMB_SCHEMA },
+];
+export { ABOUT_SUJI_SEO };
 
 export default AboutSuji;
