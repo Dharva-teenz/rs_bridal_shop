@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const SITE_URL = "https://www.rsbridal.in";
 const PAGE_URL = `${SITE_URL}/about-suji`;
 const PROFILE_IMAGE_URL = `${SITE_URL}/assets/images/artist1.png`;
-const INSTAGRAM_URL = "https://instagram.com/suji_bridal_makeover";
+const INSTAGRAM_URL = "https://instagram.com/suji_makeover_in_chennai_";
 
 const ABOUT_SUJI_SEO = {
   title: "About Suji | Bridal Makeup Artist in Chennai | RS Bridal",
